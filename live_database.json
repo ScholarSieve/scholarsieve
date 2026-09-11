@@ -1,20 +1,58 @@
 [
     {
+        "category": "Engineering",
+        "title": "RELIANCE FOUNDATION UNDERGRADUATE SCHOLARSHIPS 2026-27",
+        "offered_by": "Reliance Foundation Corporate CSR",
+        "amount": "₹2,00,000 Flat Academic Grant",
+        "deadline": "November 15, 2026",
+        "requirements": "1st Year Full-Time Degree Students + Income < 15L",
+        "overview": "Every scholarship under this programme traces back to a single promise made in December 2022. On the 90th birth anniversary of Reliance's Founder-Chairman, Shri Dhirubhai Ambani, Mrs Nita Ambani, Founder and Chairperson of Reliance Foundation, pledged 50,000 scholarships over ten years.",
+        "application_url": "https://reliancefoundation.org",
+        "faq_q1": "What does this scholarship wrap cover?",
+        "faq_a1": "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition, textbooks, and computer devices.",
+        "faq_q2": "Is there a mandatory selection test?",
+        "faq_a2": "Yes, an internal online aptitude clearance test evaluates baseline structural competencies post-registration."
+    },
+    {
         "category": "Govt",
-        "title": "Live Network Scheme Notification - National Scholarship Portal",
-        "offered_by": "Verified Central Authority Feed via National Scholarship Portal",
-        "amount": "₹25,000 / Year Contingency Grant",
-        "deadline": "December 31, 2026 (Live System Sync)",
-        "requirements": "Indian Academic Registrations + Meritorious Clearance Thresholds",
-        "overview": "Automated background extraction node successfully pulled down text fields from the official National Scholarship Portal directory endpoint."
+        "title": "TATA CAPITAL PANKH SCHOLARSHIP PROGRAM 2026-27",
+        "offered_by": "Tata Capital Corporate CSR Initiative",
+        "amount": "Up to ₹50,000 Tuition Allowance",
+        "deadline": "October 15, 2026",
+        "requirements": "Class 11, 12 or Professional Degree Students + Income < 4L",
+        "overview": "A targeted private corporate grant program designed to aid meritorious students from underprivileged backgrounds across India in continuing their higher education journeys without financial strain.",
+        "application_url": "https://tatacapital.com",
+        "faq_q1": "What expenses does this funding handle?",
+        "faq_a1": "It targets institution tuition bills, registration costs, and textbook contingencies directly.",
+        "faq_q2": "Is performance criteria checked for renewal?",
+        "faq_a2: "Yes, maintaining a minimum aggregate score of 60% with zero backlogs guarantees annual continuity."
     },
     {
         "category": "Engineering",
-        "title": "Live Network Scheme Notification - Buddy4Study Mirror Feed",
-        "offered_by": "Verified Central Authority Feed via Buddy4Study Mirror Feed",
+        "title": "JK TYRE SHIKSHA SARTHI SCHOLARSHIP PROGRAM 2026-27",
+        "offered_by": "JK Tyre & Industries Corporate Board",
         "amount": "₹25,000 / Year Contingency Grant",
-        "deadline": "December 31, 2026 (Live System Sync)",
-        "requirements": "Indian Academic Registrations + Meritorious Clearance Thresholds",
-        "overview": "Automated background extraction node successfully pulled down text fields from the official Buddy4Study Mirror Feed directory endpoint."
+        "deadline": "September 20, 2026",
+        "requirements": "Wards of Heavy Commercial Vehicle Drivers + Minimum 60% in Board",
+        "overview": "A specialized welfare scholarship initiative targeting children of heavy commercial transport drivers across India to fund diploma and technical graduate courses seamlessly.",
+        "application_url": "https://jktyre.com",
+        "faq_q1": "Who can register inside this pipeline?",
+        "faq_a1": "Strictly wards of commercial transport driving license holders who are entering technical courses.",
+        "faq_q2": "What document files must be verified?",
+        "faq_a2": "Valid commercial licenses, state income sheets, and institutional seat slips must be loaded."
+    },
+    {
+        "category": "Business",
+        "title": "RAMAN KANT MUNJAL SCHOLARSHIPS 2026-27",
+        "offered_by": "Raman Kant Munjal Foundation & Hero Group",
+        "amount": "Up to ₹5,000 / Month Living Allowance",
+        "deadline": "September 30, 2026",
+        "requirements": "1st Year BBA, B.Com, BMS or IPMAT Streams + Income < 4L",
+        "overview": "Elite private foundational scholarship program managed by the Hero Group targeting outstanding management and finance tracking undergraduate aspirants across premium state universities.",
+        "application_url": "https://rkmfoundation.org",
+        "faq_q1": "Is this limited to management fields?",
+        "faq_a1": "Yes, it targets management, economics, corporate finance, and integrated business degree paths exclusively.",
+        "faq_q2": "Are hostel accommodations handled?",
+        "faq_a2": "The flat monthly stipend can be assigned cleanly to cover residential hostel bills or library logistics."
     }
 ]
