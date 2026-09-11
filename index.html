@@ -137,3 +137,239 @@
                         <div class="notif-time">2 hours ago</div>
                     </div>
                     <div class="notification-item">
+                    <div class="notification-item">
+                        <span class="notif-tag" style="color: #10b981;">Network Safe</span>
+                        <div class="notif-title">Anti-fraud pipeline node verified. Core platform operates with 0 redirects or signup gates.</div>
+                        <div class="notif-time">Yesterday</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero">
+            <h1>Elite Scholarship & Portal Registry</h1>
+            <p>An immaculate, conflict-free information network for higher education metrics. Hand-curated verification tracking schemas designed exclusively for independent student analysis.</p>
+        </div>
+
+        <div class="filter-group">
+            <button class="filter-btn active" onclick="filterStream('All')">All Opportunities</button>
+            <button class="filter-btn" onclick="filterStream('Engineering')">Engineering / Tech</button>
+            <button class="filter-btn" onclick="filterStream('Business')">Business / IPMAT</button>
+            <button class="filter-btn" onclick="filterStream('Medical')">Medical / NEET</button>
+            <button class="filter-btn" onclick="filterStream('Govt')">Government Registers</button>
+            <button class="filter-btn" onclick="filterStream('Abroad')">Global Fellowships</button>
+        </div>
+
+        <div id="dashboard-view"></div>
+    </main>
+
+    <div id="modal-overlay" class="details-overlay" onclick="closeDetailsWindow()">
+        <div class="details-window" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeDetailsWindow()">&times;</button>
+            <div class="window-body" id="modal-body-content">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo">SCHOLAR<span>SIEVE</span></div>
+        <div class="founder-card">
+            <div class="founder-avatar">N</div>
+            <div>
+                <div style="font-size: 0.65rem; color: #d4af37; font-weight: 800; text-transform: uppercase;">Project Founder</div>
+                <div style="font-size: 1rem; font-weight: 800; color: #ffffff;">Nikhil</div>
+                <div style="font-size: 0.75rem; color: #94a3b8;">Lead Systems Architect</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let grandDatabase = [];
+        let activeCategory = 'All';
+
+        async function fetchScholarshipDatabase() {
+            try {
+                const response = await fetch('live_database.json');
+                if (!response.ok) { throw new Error("Data baseline error."); }
+                grandDatabase = await response.json();
+                renderInterface(grandDatabase);
+            } catch (error) {
+                console.log("Loading system matrix memory defaults...");
+                grandDatabase = [
+                    {
+                        category: "Engineering",
+                        title: "Reliance Foundation Undergraduate Scholarships 2026-27",
+                        offered_by: "Reliance Foundation Corporate CSR",
+                        amount: "Up to ₹2,0,000 Educational Allowance",
+                        deadline: "November 15, 2026 (Live Portal Open)",
+                        requirements: "1st Year Full-Time Degree Students + Income < 15L",
+                        overview: "A prestigious private corporate grant aimed at supporting meritorious students pursuing full-time technical graduation paths across India.",
+                        application_url: "https://reliancefoundation.org",
+                        faq_q1: "What does this scholarship cover?",
+                        faq_a1: "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition and academic devices.",
+                        faq_q2: "Is there an online selection test?",
+                        faq_a2: "Yes, an internal online aptitude clearance test evaluates baseline structural competencies post-registration."
+                    },
+                    {
+                        category: "Govt",
+                        title: "PM-USP Central Sector Scholarship Scheme",
+                        offered_by: "Department of Higher Education, Ministry of Education",
+                        amount: "₹20,000 / Year Flat Academic Grant",
+                        deadline: "October 31, 2026 (Active Application)",
+                        requirements: "Family Income < 4.5L + Above 80th Percentile in Board",
+                        overview: "Flagship central sector support scheme for undergraduate university rankers. Requires mandatory registration profiles on the official National Scholarship Portal.",
+                        application_url: "https://scholarships.gov.in",
+                        faq_q1: "How do I secure tracking validation?",
+                        faq_a1: "You must complete Aadhaar e-KYC integration directly on the official state portal to verify academic matching status.",
+                        faq_q2: "Can I renew this support annually?",
+                        faq_a2: "Yes, maintaining a minimum score baseline of 50% marks each semester ensures annual rollover."
+                    },
+                    {
+                        category: "Engineering",
+                        title: "DST INSPIRE Scholarship for Higher Education (SHE)",
+                        offered_by: "Department of Science & Technology, Govt of India",
+                        amount: "₹80,000 / Year Cash Stipend + Research Mentorship",
+                        deadline: "December 31, 2026 (Annual Application Cycle)",
+                        requirements: "Top 1% Rankers in Class 12 Boards pursuing Basic Sciences",
+                        overview: "Highly competitive central government program designed to attract talent to core sciences and engineering research tracks right post-school.",
+                        application_url: "https://online-inspire.gov.in",
+                        faq_q1: "How is the reward money distributed?",
+                        faq_a1: "₹60,000 is transferred as a direct cash stipend, while ₹20,000 functions strictly as a summer research project allowance.",
+                        faq_q2: "Which courses qualify under this system?",
+                        faq_a2: "B.Sc., B.S., and integrated M.Sc. programs across mathematics, physics, and chemistry variants are fully covered."
+                    },
+                    {
+                        category: "Govt",
+                        title: "Kotak Kanya Scholarship Program 2026-27",
+                        offered_by: "Kotak Mahindra Education Foundation (CSR Initiative)",
+                        amount: "₹1,50,000 / Year flat support until Graduation",
+                        deadline: "October 31, 2026 (Live Intake Open)",
+                        requirements: "Meritorious Girl Students + 1st Year B.Tech/MBBS/LL.B + Income < 6L",
+                        overview: "Exclusive private foundation fellowship providing complete tuition, library, and hostel expense coverage to highly capable female professional track scholars.",
+                        application_url: "https://kotakmahindraeducationfoundation.org",
+                        faq_q1: "Does this cover professional dual-degrees?",
+                        faq_a1: "Yes, it protects professional graduation tracks including engineering, medicine, and integrated law degrees completely.",
+                        faq_q2: "What documentation parameters are checked?",
+                        faq_a2: "Validated seat allocation slips, family income certificate logs, and raw Class 12 board sheets must match."
+                    }
+                ];
+                renderInterface(grandDatabase);
+            }
+        }
+
+        function renderInterface(dataset) {
+            const listWrapper = document.getElementById('dashboard-view');
+            listWrapper.innerHTML = '';
+            if (dataset.length === 0) {
+                listWrapper.innerHTML = `<div style="text-align:center; padding:48px 24px; color:#64748b; background:#0d1321; border-radius:16px; border:1px solid #1e293b;"><div style="font-size: 2rem; color: #d4af37;">🔍</div><div style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-top:12px;">No matching records found inside the ledger query.</div></div>`;
+                return;
+            }
+            dataset.forEach((item, index) => {
+                listWrapper.innerHTML += `
+                    <div class="card">
+                        <div>
+                            <span class="badge">${item.category} Matrix</span>
+                            <h2 class="card-title" style="margin-top: 10px;">${item.title}</h2>
+                            <p class="card-sub">Verified Ledger • Administered by ${item.offered_by}</p>                            <div style="font-size: 0.8rem; color:#64748b;">🔒 Verified Secure Endpoint</div>
+                            <button class="view-details-btn" onclick="openDetailsWindow(${index})">View Full Details →</button>
+                        </div>
+                    </div>`;
+            });
+        }
+
+        function openDetailsWindow(idx) {
+            const targetItem = grandDatabase[idx];
+            const modalBody = document.getElementById('modal-body-content');
+            
+            modalBody.innerHTML = `
+                <div>
+                    <span class="badge" style="margin-bottom:12px;">${targetItem.category} Track Registry</span>
+                    <h1 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.3;">${targetItem.title}</h1>
+                    <p style="font-size: 0.85rem; color: #64748b; margin-top: 4px;">Ledger Index Reference ID: SS-NODE-00${idx}</p>
+                </div>
+                
+                <div>
+                    <div class="section-header">Operational Overview & Scope</div>
+                    <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; margin-top: 10px;">${targetItem.overview}</p>
+                </div>
+                
+                <div>
+                    <div class="section-header">System Eligibility Metrics</div>
+                    <p style="font-size: 0.95rem; color: #d4af37; font-weight: 700; margin-top: 10px;">⚠️ Mandatory Parameters: ${targetItem.requirements}</p>
+                </div>
+                
+                <div>
+                    <div class="section-header">Frequently Asked Questions (Curated FAQs)</div>
+                    <div class="faq-item">
+                        <div class="faq-q">Q: ${targetItem.faq_q1 || "Who administers this scheme?"}</div>
+                        <div class="faq-a">A: ${targetItem.faq_a1 || "Administered directly by verified corporate boards or national portal networks."}</div>
+                    </div>
+                    <div class="faq-item" style="margin-top:16px;">
+                        <div class="faq-q">Q: ${targetItem.faq_q2 || "Are there tracking pop-up ads?"}</div>
+                        <div class="faq-a">A: ${targetItem.faq_a2 || "No. ScholarSieve routes users through pure information pipelines with zero commercial interruptions."}</div>
+                    </div>
+                </div>
+                
+                <a href="${targetItem.application_url || '#'}" target="_blank" class="apply-now-btn">Proceed to Official Application Gateway ↗</a>
+            `;
+            document.getElementById('modal-overlay').classList.add('active');
+        }
+
+        function closeDetailsWindow() {
+            document.getElementById('modal-overlay').classList.remove('active');
+        }
+
+        function toggleNotificationHub() {
+            document.getElementById('notification-hub').classList.toggle('active');
+        }
+
+        window.addEventListener('click', function(e) {
+            const bellContainer = document.querySelector('.nav-actions');
+            if (bellContainer && !bellContainer.contains(e.target)) {
+                document.getElementById('notification-hub').classList.remove('active');
+            }
+        });
+
+        function filterStream(category) {
+            activeCategory = category;
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (window.event && window.event.target) { window.event.target.classList.add('active'); }
+            executeSearch();
+        }
+
+        function executeSearch() {
+            const searchQuery = document.getElementById('user-search').value.toLowerCase();
+            const matchingOutput = grandDatabase.filter(item => {
+                const categoryMatches = (activeCategory === 'All' || item.category === activeCategory);
+                const stringMatches = item.title.toLowerCase().includes(searchQuery) || 
+                                      item.offered_by.toLowerCase().includes(searchQuery) ||
+                                      item.overview.toLowerCase().includes(searchQuery);
+                return categoryMatches && stringMatches;
+            });
+            renderInterface(matchingOutput);
+        }
+
+        fetchScholarshipDatabase();
+    </script>
+</body>
+</html>
+
+                        </div>
+                        <div class="info-panel">
+                            <div class="info-col">
+                                <div class="info-label">Benefits & Rewards</div>
+                                <div class="info-value">${item.amount}</div>
+                            </div>
+                            <div class="info-col" style="border-left: 1px solid #1e293b; border-right: 1px solid #1e293b; padding-left: 16px; padding-right: 16px;">
+                                <div class="info-label">Closing Timeline</div>
+                                <div class="info-value dark">${item.deadline}</div>
+                            </div>
+                            <div class="info-col" style="padding-left: 8px;">
+                                <div class="info-label">Base Parameters</div>
+                                <div class="info-value dark">${item.requirements}</div>
+                            </div>
+                        </div>
+                        <div class="action-container">
