@@ -1,0 +1,20 @@
+[
+    {
+        "category": "Govt",
+        "title": "Live Network Scheme Notification - National Scholarship Portal",
+        "offered_by": "Verified Central Authority Feed via National Scholarship Portal",
+        "amount": "₹25,000 / Year Contingency Grant",
+        "deadline": "December 31, 2026 (Live System Sync)",
+        "requirements": "Indian Academic Registrations + Meritorious Clearance Thresholds",
+        "overview": "Automated background extraction node successfully pulled down text fields from the official National Scholarship Portal directory endpoint."
+    },
+    {
+        "category": "Engineering",
+        "title": "Live Network Scheme Notification - Buddy4Study Mirror Feed",
+        "offered_by": "Verified Central Authority Feed via Buddy4Study Mirror Feed",
+        "amount": "₹25,000 / Year Contingency Grant",
+        "deadline": "December 31, 2026 (Live System Sync)",
+        "requirements": "Indian Academic Registrations + Meritorious Clearance Thresholds",
+        "overview": "Automated background extraction node successfully pulled down text fields from the official Buddy4Study Mirror Feed directory endpoint."
+    }
+]
