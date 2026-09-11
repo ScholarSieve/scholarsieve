@@ -1,7 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ScholarSieve - Premium Student Data Vault</title>
+    <style>
+        /* Premium Minimalist Emerald Style Engine */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: #f7f9fa;
+            color: #1a202c;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100vh;
+        }
+        nav {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 16px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo { font-size: 1.4rem; font-weight: 800; letter-spacing: 0.05em; color: #004d3d; text-transform: uppercase; }
+        .logo span { color: #718096; font-weight: 300; border-left: 1px solid #cbd5e0; margin-left: 8px; padding-left: 8px; text-transform: lowercase; font-size: 0.95rem; }
+        
+        .nav-actions { position: relative; display: flex; align-items: center; }
+        .notification-bell { background: none; border: none; cursor: pointer; position: relative; padding: 8px; color: #4a5568; font-size: 1.3rem; }
+        .bell-dot { position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; background: #ef4444; border-radius: 50%; border: 2px solid #ffffff; }
+        .notification-dropdown { position: absolute; top: 45px; right: 0; width: 340px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: none; flex-direction: column; overflow: hidden; z-index: 200; }
+        .notification-dropdown.active { display: flex; }
+        .dropdown-header { padding: 14px 18px; border-bottom: 1px solid #e2e8f0; font-size: 0.8rem; font-weight: 700; color: #4a5568; text-transform: uppercase; background: #f7f9fa; }
+        .dropdown-list { max-height: 280px; overflow-y: auto; }
+        .notification-item { padding: 14px 18px; border-bottom: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 4px; text-align: left; }
+        .notif-tag { font-size: 0.65rem; font-weight: 700; color: #00664f; text-transform: uppercase; }
+        .notif-title { font-size: 0.85rem; font-weight: 500; color: #2d3748; }
+        
+        main { max-width: 1000px; width: 95%; margin: 40px auto; }
+        .hero h1 { font-size: 2.4rem; font-weight: 700; color: #004d3d; letter-spacing: -0.02em; }
+        .hero p { color: #4a5568; font-size: 1rem; line-height: 1.6; margin-top: 10px; margin-bottom: 30px; }
+        
+        .search-box { width: 100%; max-width: 480px; padding: 12px 16px; background: #ffffff; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 0.95rem; color: #1a202c; outline: none; margin-bottom: 28px; }
+        .search-box:focus { border-color: #00664f; }
+        
+        .filter-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
+        .filter-btn { background: #ffffff; border: 1px solid #cbd5e0; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: #4a5568; cursor: pointer; }
+        .filter-btn.active { background: #e6f0ed; color: #004d3d; border-color: #004d3d; }
+        .filter-count { display: inline-block; background: rgba(0, 77, 61, 0.1); color: #004d3d; font-size: 0.75rem; padding: 2px 6px; border-radius: 10px; margin-left: 6px; font-weight: 700; }
+        
+        .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); text-align: left; }
+        .sponsored-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: #dd6b20; text-transform: uppercase; letter-spacing: 0.05em; }
+        .card-title { font-size: 1.25rem; font-weight: 700; color: #1a202c; cursor: pointer; }
+        .card-title:hover { color: #00664f; }
+        .card-sub { font-size: 0.85rem; color: #718096; margin-top: -4px; }
+        
+        .info-panel { display: flex; gap: 32px; padding: 8px 0; flex-wrap: wrap; }
+        .info-col { display: flex; align-items: center; gap: 10px; }
+        .info-icon { font-size: 1.2rem; }
+        .info-text-group { display: flex; flex-direction: column; }
+        .info-label { font-size: 0.7rem; font-weight: 600; color: #718096; text-transform: uppercase; }
+        .info-value { font-size: 0.9rem; font-weight: 700; color: #2d3748; }
+        .overview-box { font-size: 0.9rem; color: #4a5568; line-height: 1.6; }
+        
+        .card-actions-row { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 8px; border-top: 1px solid #f0f4f8; padding-top: 16px; }
+        .btn-action-node { padding: 10px 24px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-decoration: none; text-align: center; }
+        .btn-action-node.secondary { background: transparent; border: 1px solid #cbd5e0; color: #4a5568; }
+        .btn-action-node.secondary:hover { background: #f7f9fa; }
+        .btn-action-node.primary { background: #004d3d; color: #ffffff; border: none; padding: 10px 32px; }
+        .btn-action-node.primary:hover { background: #00664f; }
+        
+        .details-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
+        .details-overlay.active { opacity: 1; pointer-events: auto; }
+        .details-window { background: #ffffff; border: 1px solid #e2e8f0; width: 92%; max-width: 680px; border-radius: 12px; max-height: 85vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 16px; right: 20px; font-size: 1.6rem; color: #a0aec0; cursor: pointer; background: none; border: none; }
+        .window-body { padding: 36px; display: flex; flex-direction: column; gap: 20px; text-align: left; }
+        
+        .tab-menu-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #f7f9fa; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; }
+        .tab-trigger-btn { background: transparent; border: none; padding: 12px; color: #718096; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+        .tab-trigger-btn.active { background: #004d3d; color: #ffffff; }
+        .tab-pane-content { display: none; margin-top: 4px; line-height: 1.6; font-size: 0.95rem; color: #4a5568; }
+        .tab-pane-content.active { display: block; }
+        
+        .section-headline { font-size: 0.75rem; font-weight: 700; color: #004d3d; text-transform: uppercase; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; margin-bottom: 8px; }
+        .faq-block-row { margin-bottom: 12px; }
+        .faq-question-text { font-weight: 700; color: #1a202c; }
+        .apply-now-btn { background: #004d3d; color: #ffffff; text-decoration: none; width: 100%; text-align: center; padding: 14px; border-radius: 6px; font-weight: 700; text-transform: uppercase; margin-top: 8px; display: block; }
+        
+        footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 32px; text-align: center; }
+        .founder-card { display: flex; align-items: center; gap: 14px; background: #f7f9fa; border: 1px solid #e2e8f0; padding: 12px 24px; border-radius: 8px; max-width: 320px; margin: 16px auto 0 auto; text-align: left; }
+        .founder-avatar { width: 38px; height: 38px; border-radius: 50%; background: #004d3d; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Scholar<span>sieve</span></div>
+        <div class="nav-actions">
+            <button class="notification-bell" onclick="toggleNotificationHub()">
+                🔔<span class="bell-dot"></span>
+            </button>
+            <div id="notification-hub" class="notification-dropdown">
+                <div class="dropdown-header" id="notif-header-count">System Notifications (0)</div>
+                <div class="dropdown-list" id="notif-dropdown-list-wrapper"></div>
             </div>
         </div>
     </nav>
-
     <main>
         <div class="hero">
             <h1>Find college scholarships</h1>
@@ -51,20 +159,6 @@
             } catch (error) {
                 console.log("Syncing database pipeline. Deploying pristine multi-category fallback ledger...");
                 grandDatabase = [
-                    {
-                        category: "Engineering",
-                        title: "$40,000 Niche No Essay Scholarship",
-                        offered_by: "Niche Higher Education Networks",
-                        amount: "$40,000 Flat Grant",
-                        deadline: "October 15, 2026",
-                        requirements: "None (Open Registration Entry)",
-                        overview: "Niche can help with every step of the college search including paying for it. We are giving one student $40,000 to help cover tuition, housing, books, and other college expenses — no essay required! High school seniors who apply can also be eligible to receive acceptance offers from our partners.",
-                        application_url: "https://niche.com",
-                        faq_q1: "How is the winner selected for this reward?",
-                        faq_a1: "A random drawing executes monthly across all validated registration nodes logged into the network stream.",
-                        faq_q2: "Can international students apply?",
-                        faq_a2: "This specific funding track requires valid citizenship parameters or active high school enrollment profiles."
-                    },
                     {
                         category: "Engineering",
                         title: "Reliance Foundation Undergraduate Scholarships 2026-27",
@@ -178,7 +272,8 @@
                 listWrapper.innerHTML += `
                     <div class="card">
                         <div>
-                            <span class="sponsored-tag">✦ Sponsored</span>
+                        <div>
+                            <span class="sponsored-tag">✦ Curated</span>
                             <h2 class="card-title" onclick="openDetailsWindow(${index})" style="margin-top: 4px;">${item.title}</h2>
                             <p class="card-sub">Offered by ${item.offered_by}</p>
                         </div>
@@ -217,6 +312,7 @@
             });
         }
 
+        // IDEA 2 & IMAGE 2: Multi-Tab Full Details Frame Module Ingestion Loop
         function openDetailsWindow(idx) {
             const targetItem = grandDatabase[idx];
             const modalBody = document.getElementById('modal-body-content');
