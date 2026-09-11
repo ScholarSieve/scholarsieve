@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScholarSieve - Premium Student Data Vault</title>
     <style>
-        /* Luxury Elite Brand Framework */
+        /* Silicon Valley Brand Framework */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #090d16; /* Deep Midnight Obsidian */
@@ -31,7 +31,7 @@
         .logo { font-size: 1.3rem; font-weight: 900; letter-spacing: 0.05em; color: #ffffff; text-transform: uppercase; }
         .logo span { color: #d4af37; font-weight: 300; border-left: 1px solid #334155; margin-left: 8px; padding-left: 8px; }
         
-        /* MODERN NOTIFICATION BELL MODULE STYLING */
+        /* Modern Notification System Dropdown */
         .nav-actions { position: relative; display: flex; align-items: center; }
         .notification-bell {
             background: none; border: none; cursor: pointer; position: relative; padding: 8px; color: #94a3b8; font-size: 1.4rem; transition: color 0.2s;
@@ -68,11 +68,10 @@
         }
         .filter-btn:hover, .filter-btn.active { background: #d4af37; color: #090d16; border-color: #d4af37; }
         
-        /* Premium Card Layout Elements */
-        .card { background: #0d1321; border: 1px solid #1e293b; border-radius: 16px; padding: 28px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: left; transition: transform 0.2s ease, border-color 0.2s ease; }
-        .card:hover { transform: translateY(-2px); border-color: rgba(212, 175, 55, 0.4); }
+        /* Premium Open-Grid Cards Styling */
+        .card { background: #0d1321; border: 1px solid #1e293b; border-radius: 16px; padding: 28px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: left; }
         .badge { display: inline-block; font-size: 0.65rem; font-weight: 800; color: #d4af37; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); padding: 6px 12px; border-radius: 6px; text-transform: uppercase; width: max-content; }
-        .card-title { font-size: 1.4rem; font-weight: 800; color: #ffffff; }
+        .card-title { font-size: 1.4rem; font-weight: 800; color: #ffffff; text-transform: uppercase; letter-spacing: 0.02em; }
         .card-sub { font-size: 0.85rem; color: #64748b; margin-top: 2px; }
         
         .info-panel { display: grid; grid-template-columns: repeat(3, 1fr); background: #090d16; border: 1px solid #1e293b; padding: 20px; border-radius: 12px; gap: 16px; }
@@ -81,33 +80,47 @@
         .info-value { font-size: 0.95rem; font-weight: 700; color: #d4af37; margin-top: 6px; }
         .info-value.dark { color: #e2e8f0; }
         
-        /* Action Utility System Styling */
-        .action-container { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
-        .view-details-btn {
-            background: transparent; border: 1px solid #d4af37; color: #d4af37; padding: 10px 22px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.02em;
+        /* DUAL ACTION BUTTON PLACEMENT GROUPS */
+        .card-actions-row { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #1e293b; padding-top: 20px; margin-top: 4px; gap: 16px; }
+        .btn-flex-wrapper { display: flex; gap: 12px; }
+        .btn-action-node {
+            padding: 12px 24px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; text-transform: uppercase; letter-spacing: 0.03em; text-decoration: none; text-align: center; display: inline-block; outline: none;
         }
-        .view-details-btn:hover { background: rgba(212, 175, 55, 0.08); }
+        .btn-action-node.secondary {
+            background: #0d1321; border: 1px solid #1e293b; color: #cbd5e1;
+        }
+        .btn-action-node.secondary:hover { background: #161f38; border-color: #334155; color: #ffffff; }
+        .btn-action-node.primary {
+            background: #d4af37; border: 1px solid #d4af37; color: #090d16; font-weight: 800;
+        }
+        .btn-action-node.primary:hover { background: #f3cf65; border-color: #f3cf65; }
         
-        /* ITEM 2: Interactive "View Details" Panel Overlay System (Modal) */
+        /* FLYOUT WINDOW TAB MATRIX STYLING (Image 2 Configuration) */
         .details-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 8, 14, 0.85); backdrop-filter: blur(8px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
         }
         .details-overlay.active { opacity: 1; pointer-events: auto; }
         .details-window {
-            background: #0d1321; border: 1px solid #1e293b; width: 90%; max-width: 650px; border-radius: 20px; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.3s ease;
+            background: #0d1321; border: 1px solid #1e293b; width: 92%; max-width: 700px; border-radius: 20px; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; animation: slideUp 0.3s ease;
         }
         @keyframes slideUp { from { transform: translateY(20px); } to { transform: translateY(0); } }
-        .close-btn { position: absolute; top: 20px; right: 24px; font-size: 1.8rem; color: #64748b; cursor: pointer; background: none; border: none; outline: none; }
+        .close-btn { position: absolute; top: 20px; right: 24px; font-size: 1.8rem; color: #64748b; cursor: pointer; background: none; border: none; }
         .close-btn:hover { color: #ffffff; }
         .window-body { padding: 40px; display: flex; flex-direction: column; gap: 24px; text-align: left; }
-        .section-header { font-size: 0.75rem; font-weight: 800; color: #d4af37; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #1e293b; padding-bottom: 6px; }
-        .faq-item { margin-top: 10px; }
-        .faq-q { font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-bottom: 4px; }
-        .faq-a { font-size: 0.9rem; color: #94a3b8; line-height: 1.5; }
-        .apply-now-btn {
-            background: #d4af37; color: #090d16; text-decoration: none; width: 100%; text-align: center; padding: 16px; border-radius: 10px; font-weight: 800; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 12px; display: block; transition: background 0.2s ease;
+        
+        /* Tab Row Mechanics exactly matching Buddy4Study Header Layout */
+        .tab-menu-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #090d16; border: 1px solid #1e293b; border-radius: 8px; overflow: hidden; margin-top: 8px; }
+        .tab-trigger-btn {
+            background: transparent; border: none; padding: 14px; color: #94a3b8; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.2s; border-bottom: 2px solid transparent;
         }
-        .apply-now-btn:hover { background: #f3cf65; }
+        .tab-trigger-btn:hover { color: #ffffff; background: rgba(255,255,255,0.01); }
+        .tab-trigger-btn.active { background: #d4af37; color: #090d16; border-color: #d4af37; font-weight: 800; }
+        .tab-pane-content { display: none; margin-top: 8px; line-height: 1.6; font-size: 0.95rem; color: #cbd5e1; }
+        .tab-pane-content.active { display: block; }
+        
+        .section-headline { font-size: 0.75rem; font-weight: 800; color: #d4af37; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; border-bottom: 1px solid #1e293b; padding-bottom: 4px; }
+        .faq-block-row { margin-bottom: 16px; }
+        .faq-question-text { font-weight: 700; color: #ffffff; margin-bottom: 4px; }
 
         footer { background: #0d1321; border-top: 1px solid #1e293b; padding: 40px; margin-top: 80px; text-align: center; }
         .founder-card { display: flex; align-items: center; gap: 18px; background: rgba(212, 175, 55, 0.03); border: 1px solid rgba(212, 175, 55, 0.15); padding: 16px 28px; border-radius: 14px; max-width: 380px; margin: 24px auto 0 auto; text-align: left; }
@@ -118,7 +131,6 @@
 
     <nav>
         <div class="logo">SCHOLAR<span>SIEVE</span></div>
-        <!-- MODERN SYSTEM NOTIFICATION BELL DROPDOWN INTERFACE ELEMENT -->
         <div class="nav-actions">
             <button class="notification-bell" onclick="toggleNotificationHub()">
                 🔔<span class="bell-dot"></span>
@@ -135,12 +147,6 @@
                         <span class="notif-tag" style="color: #ef4444;">Closing Window</span>
                         <div class="notif-title">PM-USP Central Scheme timeline threshold expiring in 48 hours. Double check data fields.</div>
                         <div class="notif-time">2 hours ago</div>
-                    </div>
-                    <div class="notification-item">
-                    <div class="notification-item">
-                        <span class="notif-tag" style="color: #10b981;">Network Safe</span>
-                        <div class="notif-title">Anti-fraud pipeline node verified. Core platform operates with 0 redirects or signup gates.</div>
-                        <div class="notif-time">Yesterday</div>
                     </div>
                 </div>
             </div>
@@ -189,32 +195,33 @@
         let grandDatabase = [];
         let activeCategory = 'All';
 
+        // THE SYSTEM INTEGRITY FETCH ENGINE: Connects to your live cloud updates text file automatically
         async function fetchScholarshipDatabase() {
             try {
                 const response = await fetch('live_database.json');
-                if (!response.ok) { throw new Error("Data baseline error."); }
+                if (!response.ok) { throw new Error("Data sync file offline."); }
                 grandDatabase = await response.json();
                 renderInterface(grandDatabase);
             } catch (error) {
-                console.log("Loading system matrix memory defaults...");
+                console.log("Syncing database pipeline. Initializing robust multi-layer fallback metrics...");
                 grandDatabase = [
                     {
                         category: "Engineering",
-                        title: "Reliance Foundation Undergraduate Scholarships 2026-27",
+                        title: "RELIANCE FOUNDATION UNDERGRADUATE SCHOLARSHIPS 2026-27",
                         offered_by: "Reliance Foundation Corporate CSR",
                         amount: "Up to ₹2,0,000 Educational Allowance",
                         deadline: "November 15, 2026 (Live Portal Open)",
                         requirements: "1st Year Full-Time Degree Students + Income < 15L",
-                        overview: "A prestigious private corporate grant aimed at supporting meritorious students pursuing full-time technical graduation paths across India.",
+                        overview: "Every scholarship under this programme traces back to a single promise made in December 2022. On the 90th birth anniversary of Reliance's Founder-Chairman, Shri Dhirubhai Ambani, Mrs Nita Ambani, Founder and Chairperson of Reliance Foundation, pledged 50,000 scholarships over ten years.",
                         application_url: "https://reliancefoundation.org",
-                        faq_q1: "What does this scholarship cover?",
-                        faq_a1: "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition and academic devices.",
-                        faq_q2: "Is there an online selection test?",
+                        faq_q1: "What does this scholarship wrap cover?",
+                        faq_a1: "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition, textbooks, and computer devices.",
+                        faq_q2: "Is there a mandatory selection test?",
                         faq_a2: "Yes, an internal online aptitude clearance test evaluates baseline structural competencies post-registration."
                     },
                     {
                         category: "Govt",
-                        title: "PM-USP Central Sector Scholarship Scheme",
+                        title: "PM-USP CENTRAL SECTOR SCHOLARSHIP SCHEME",
                         offered_by: "Department of Higher Education, Ministry of Education",
                         amount: "₹20,000 / Year Flat Academic Grant",
                         deadline: "October 31, 2026 (Active Application)",
@@ -225,34 +232,6 @@
                         faq_a1: "You must complete Aadhaar e-KYC integration directly on the official state portal to verify academic matching status.",
                         faq_q2: "Can I renew this support annually?",
                         faq_a2: "Yes, maintaining a minimum score baseline of 50% marks each semester ensures annual rollover."
-                    },
-                    {
-                        category: "Engineering",
-                        title: "DST INSPIRE Scholarship for Higher Education (SHE)",
-                        offered_by: "Department of Science & Technology, Govt of India",
-                        amount: "₹80,000 / Year Cash Stipend + Research Mentorship",
-                        deadline: "December 31, 2026 (Annual Application Cycle)",
-                        requirements: "Top 1% Rankers in Class 12 Boards pursuing Basic Sciences",
-                        overview: "Highly competitive central government program designed to attract talent to core sciences and engineering research tracks right post-school.",
-                        application_url: "https://online-inspire.gov.in",
-                        faq_q1: "How is the reward money distributed?",
-                        faq_a1: "₹60,000 is transferred as a direct cash stipend, while ₹20,000 functions strictly as a summer research project allowance.",
-                        faq_q2: "Which courses qualify under this system?",
-                        faq_a2: "B.Sc., B.S., and integrated M.Sc. programs across mathematics, physics, and chemistry variants are fully covered."
-                    },
-                    {
-                        category: "Govt",
-                        title: "Kotak Kanya Scholarship Program 2026-27",
-                        offered_by: "Kotak Mahindra Education Foundation (CSR Initiative)",
-                        amount: "₹1,50,000 / Year flat support until Graduation",
-                        deadline: "October 31, 2026 (Live Intake Open)",
-                        requirements: "Meritorious Girl Students + 1st Year B.Tech/MBBS/LL.B + Income < 6L",
-                        overview: "Exclusive private foundation fellowship providing complete tuition, library, and hostel expense coverage to highly capable female professional track scholars.",
-                        application_url: "https://kotakmahindraeducationfoundation.org",
-                        faq_q1: "Does this cover professional dual-degrees?",
-                        faq_a1: "Yes, it protects professional graduation tracks including engineering, medicine, and integrated law degrees completely.",
-                        faq_q2: "What documentation parameters are checked?",
-                        faq_a2: "Validated seat allocation slips, family income certificate logs, and raw Class 12 board sheets must match."
                     }
                 ];
                 renderInterface(grandDatabase);
@@ -272,13 +251,34 @@
                         <div>
                             <span class="badge">${item.category} Matrix</span>
                             <h2 class="card-title" style="margin-top: 10px;">${item.title}</h2>
-                            <p class="card-sub">Verified Ledger • Administered by ${item.offered_by}</p>                            <div style="font-size: 0.8rem; color:#64748b;">🔒 Verified Secure Endpoint</div>
-                            <button class="view-details-btn" onclick="openDetailsWindow(${index})">View Full Details →</button>
+                            <p class="card-sub">Verified Ledger • Administered by ${item.offered_by}</p>
+                        </div>
+                        <div class="info-panel">
+                            <div class="info-col">
+                                <div class="info-label">Benefits & Rewards</div>
+                                <div class="info-value">${item.amount}</div>
+                            </div>
+                            <div class="info-col" style="border-left: 1px solid #1e293b; border-right: 1px solid #1e293b; padding-left: 16px; padding-right: 16px;">
+                                <div class="info-label">Closing Timeline</div>
+                                <div class="info-value dark">${item.deadline}</div>
+                            </div>
+                            <div class="info-col" style="padding-left: 8px;">
+                                <div class="info-label">Base Parameters</div>
+                                <div class="info-value dark">${item.requirements}</div>
+                            </div>
+                        </div>
+                        <div class="card-actions-row">
+                            <div style="font-size: 0.8rem; color:#64748b;">🔒 Encrypted Verified Source Portal</div>
+                            <div class="btn-flex-wrapper">
+                                <button class="btn-action-node secondary" onclick="openDetailsWindow(${index})">View Details</button>
+                                <a href="${item.application_url || '#'}" target="_blank" class="btn-action-node primary">Apply Now</a>
+                            </div>
                         </div>
                     </div>`;
             });
         }
 
+        // TAB NAVIGATION STATE CONTROL ARCHITECTURE (Image 2 System Rules)
         function openDetailsWindow(idx) {
             const targetItem = grandDatabase[idx];
             const modalBody = document.getElementById('modal-body-content');
@@ -286,35 +286,56 @@
             modalBody.innerHTML = `
                 <div>
                     <span class="badge" style="margin-bottom:12px;">${targetItem.category} Track Registry</span>
-                    <h1 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.3;">${targetItem.title}</h1>
+                    <h1 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; line-height: 1.3; text-transform: uppercase;">${targetItem.title}</h1>
                     <p style="font-size: 0.85rem; color: #64748b; margin-top: 4px;">Ledger Index Reference ID: SS-NODE-00${idx}</p>
                 </div>
                 
-                <div>
-                    <div class="section-header">Operational Overview & Scope</div>
-                    <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; margin-top: 10px;">${targetItem.overview}</p>
+                <!-- Buddy4Study Tab Header Framework Replica -->
+                <div class="tab-menu-bar">
+                    <button id="trigger-about" class="tab-trigger-btn active" onclick="switchInnerTab('about')">About Program</button>
+                    <button id="trigger-eligibility" class="tab-trigger-btn" onclick="switchInnerTab('eligibility')">Eligibility</button>
+                    <button id="trigger-faqs" class="tab-trigger-btn" onclick="switchInnerTab('faqs')">FAQ's</button>
                 </div>
                 
-                <div>
-                    <div class="section-header">System Eligibility Metrics</div>
-                    <p style="font-size: 0.95rem; color: #d4af37; font-weight: 700; margin-top: 10px;">⚠️ Mandatory Parameters: ${targetItem.requirements}</p>
+                
+                <!-- About Tab Display Pane -->
+                <div id="pane-about" class="tab-pane-content active">
+                    <div class="section-headline">About The Program</div>
+                    <p style="margin-top:6px;">${targetItem.overview || "No comprehensive program summary logs archived inside current node."}</p>
                 </div>
                 
-                <div>
-                    <div class="section-header">Frequently Asked Questions (Curated FAQs)</div>
-                    <div class="faq-item">
-                        <div class="faq-q">Q: ${targetItem.faq_q1 || "Who administers this scheme?"}</div>
-                        <div class="faq-a">A: ${targetItem.faq_a1 || "Administered directly by verified corporate boards or national portal networks."}</div>
+                <div id="pane-eligibility" class="tab-pane-content">
+                    <div class="section-headline">Eligibility Criteria Parameters</div>
+                    <p style="margin-top:6px; color: #d4af37; font-weight:700;">⚠️ Mandatory System Cut-offs:</p>
+                    <p style="margin-top:4px;">${targetItem.requirements}</p>
+                    <p style="margin-top:12px; color:#64748b; font-size:0.85rem;">* Note: Incomplete documentation or mismatched income statements will throw validation flags during cloud scraper filtration routines.</p>
+                </div>
+                
+                <div id="pane-faqs" class="tab-pane-content">
+                    <div class="section-headline">Frequently Asked Questions</div>
+                    <div class="faq-block-row">
+                        <div class="faq-question-text">Q: ${targetItem.faq_q1 || "Who administers this tracking portal?"}</div>
+                        <div style="color:#94a3b8; font-size:0.9rem; margin-top:2px;">A: ${targetItem.faq_a1 || "Administered directly by verified corporate boards or national portal networks."}</div>
                     </div>
-                    <div class="faq-item" style="margin-top:16px;">
-                        <div class="faq-q">Q: ${targetItem.faq_q2 || "Are there tracking pop-up ads?"}</div>
-                        <div class="faq-a">A: ${targetItem.faq_a2 || "No. ScholarSieve routes users through pure information pipelines with zero commercial interruptions."}</div>
+                    <div class="faq-block-row" style="margin-top:14px;">
+                        <div class="faq-question-text">Q: ${targetItem.faq_q2 || "Is renewal profile tracing enforced?"}</div>
+                        <div style="color:#94a3b8; font-size:0.9rem; margin-top:2px;">A: ${targetItem.faq_a2 || "Maintaining standard campus academic grading levels guarantees continuation across subsequent years."}</div>
                     </div>
                 </div>
                 
-                <a href="${targetItem.application_url || '#'}" target="_blank" class="apply-now-btn">Proceed to Official Application Gateway ↗</a>
+                <a href="${targetItem.application_url || '#'}" target="_blank" class="apply-now-btn">Apply Now</a>
             `;
             document.getElementById('modal-overlay').classList.add('active');
+        }
+
+        function switchInnerTab(tabName) {
+            // Remove active tags across button selections
+            document.querySelectorAll('.tab-trigger-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-pane-content').forEach(pane => pane.classList.remove('active'));
+            
+            // Activate selected system modules
+            document.getElementById('trigger-' + tabName).classList.add('active');
+            document.getElementById('pane-' + tabName).classList.add('active');
         }
 
         function closeDetailsWindow() {
@@ -356,20 +377,3 @@
     </script>
 </body>
 </html>
-
-                        </div>
-                        <div class="info-panel">
-                            <div class="info-col">
-                                <div class="info-label">Benefits & Rewards</div>
-                                <div class="info-value">${item.amount}</div>
-                            </div>
-                            <div class="info-col" style="border-left: 1px solid #1e293b; border-right: 1px solid #1e293b; padding-left: 16px; padding-right: 16px;">
-                                <div class="info-label">Closing Timeline</div>
-                                <div class="info-value dark">${item.deadline}</div>
-                            </div>
-                            <div class="info-col" style="padding-left: 8px;">
-                                <div class="info-label">Base Parameters</div>
-                                <div class="info-value dark">${item.requirements}</div>
-                            </div>
-                        </div>
-                        <div class="action-container">
