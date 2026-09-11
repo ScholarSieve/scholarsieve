@@ -129,7 +129,7 @@
         @keyframes slideUp { from { transform: translateY(10px); } to { transform: translateY(0); } }
         .close-btn { position: absolute; top: 16px; right: 20px; font-size: 1.6rem; color: #a0aec0; cursor: pointer; background: none; border: none; outline: none; }
         .close-btn:hover { color: #4a5568; }
-        .window-body { padding: 36px; display: flex; flex-direction: column; gap: 20px; text-align: left; }
+        .window-body { padding: 36px; display: flex; flex-direction: column; gap: 24px; text-align: left; }
         
         .tab-menu-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #f7f9fa; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 4px; }
         .tab-trigger-btn {
@@ -256,7 +256,7 @@
                         faq_a2: "Valid commercial licenses, state income sheets, and institutional seat slips must be loaded."
                     },
                     {
-                        category: "Govt",
+                        category: "Business",
                         title: "RAMAN KANT MUNJAL SCHOLARSHIPS 2026-27",
                         offered_by: "Raman Kant Munjal Foundation & Hero Group",
                         amount: "Up to ₹5,000 / Month Living Allowance",
@@ -405,7 +405,7 @@
                         <div class="faq-question-text">Q: ${targetItem.faq_q1 || "Who administers this program tracking portal?"}</div>
                         <div style="color:#4a5568; font-size:0.9rem;">A: ${targetItem.faq_a1 || "Administered directly by verified corporate foundation tracks or state ministry boards."}</div>
                     </div>
-                    <div class="faq-block-row" style="margin-top:12px;">
+                    <div class="faq-block-row" style="margin-top:14px;">
                         <div class="faq-question-text">Q: ${targetItem.faq_q2 || "Is renewal profile validation enforced?"}</div>
                         <div style="color:#4a5568; font-size:0.9rem;">A: ${targetItem.faq_a2 || "Maintaining standard campus academic grading levels guarantees continuation across subsequent years."}</div>
                     </div>
@@ -416,7 +416,6 @@
             document.getElementById('modal-overlay').classList.add('active');
         }
 
-        // CONTROL LOOPS FOR THE INTERACTIVE MULTI-TAB DISPLAY WINDOW
         function switchInnerTab(tabName) {
             document.querySelectorAll('.tab-trigger-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.tab-pane-content').forEach(pane => pane.classList.remove('active'));
