@@ -118,7 +118,7 @@
         .btn-action-node { padding: 10px 24px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; text-decoration: none; text-align: center; display: inline-block; outline: none; border: none; }
         .btn-action-node.secondary { background: transparent; border: 1px solid #cbdcd7; color: #3b5950; }
         .btn-action-node.secondary:hover { background: #f4f8f6; }
-        .btn-action-node.primary { background: #004d3d; color: #ffffff; padding: 10px 32px; }
+        .btn-action-node.primary { background: #004d3d; color: #ffffff; padding: 10px 32px; text-decoration: none; }
         .btn-action-node.primary:hover { background: #00664f; }
         
         .details-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.2s ease; }
@@ -233,7 +233,7 @@
                     category: "Engineering",
                     title: "RELIANCE FOUNDATION UNDERGRADUATE SCHOLARSHIPS 2026-27",
                     offered_by: "Reliance Foundation Corporate CSR Board",
-                    amount: "₹2,00,000 Total Stipend",
+                    amount: "₹2,0,000 Total Stipend",
                     deadline: "November 15, 2026",
                     caste: "General, OBC, SC, ST",
                     state: "Pan-India",
@@ -356,18 +356,6 @@
                     deadline: "June 15, 2027 Counseling Window",
                     caste: "General, OBC, SC, ST",
                     state: "Pan-India",
-                    requirements: "BITSAT Entrance Scores Criteria + Family Income < 12L (MCN Threshold)",
-                    overview: "Admissions logging and fee remission dashboard for the Pilani, Goa, and Hyderabad campuses. MCN pathways award automated fee deductions ranging from 25%, 40%, up to 80% of aggregate semester fees.",
-                    application_url: "https://bitsadmission.com",
-                    faq_q1: "What BITSAT scores secure top MCN allocations?",
-                    faq_a1: "Score sheets matching 280+ metrics typically qualify for primary 40% and 80% bracket assignments when income criteria maps correctly.",
-                    faq_q2: "Does BITS Pilani enforce category reservations?",
-                    faq_a2: "No, admissions and structural waivers operate purely on unified competitive open-merit matrices."
-                }
-            ];
-            initializeInterfacePipeline();
-        }
-
         function initializeInterfacePipeline() {
             renderFilterChips();
             renderInterface();
@@ -508,8 +496,6 @@
                 if (activeMasterTab === "scholarships") scholarshipWrapper.innerHTML = emptyMsg;
                 else examWrapper.innerHTML = emptyMsg;
             }
-        }
-
         }
 
         function openDetailsWindow(idx) {
