@@ -48,7 +48,7 @@
         /* Modern System Dropdown Menu */
         .nav-actions { position: relative; display: flex; align-items: center; }
         .notification-bell {
-            background: none; border: none; cursor: pointer; position: relative; padding: 8px; color: #4a5568; font-size: 1.3rem; transition: color 0.2s;
+            background: none; border: none; cursor: pointer; position: relative; padding: 8px; color: #4a5568; font-size: 1.4rem; transition: color 0.2s;
         }
         .notification-bell:hover { color: #00664f; }
         .bell-dot {
@@ -206,7 +206,7 @@
         // THE LIVE PIPELINE CORE: Reads directly from your cloud repository files
         async function fetchScholarshipDatabase() {
             try {
-                const response = await fetch('live_database.json');
+                const response = await fetch('./live_database.json');
                 if (!response.ok) { throw new Error("Data sync file offline."); }
                 grandDatabase = await response.json();
                 initializeInterfacePipeline();
@@ -240,40 +240,11 @@
                         faq_a1: "It targets institution tuition bills, registration costs, and textbook contingencies directly.",
                         faq_q2: "Is performance criteria checked for renewal?",
                         faq_a2: "Yes, maintaining a minimum aggregate score of 60% with zero backlogs guarantees annual continuity."
-                    },
-                    {
-                        category: "Engineering",
-                        title: "JK TYRE SHIKSHA SARTHI SCHOLARSHIP PROGRAM 2026-27",
-                        offered_by: "JK Tyre & Industries Corporate Board",
-                        amount: "₹25,000 / Year Contingency Grant",
-                        deadline: "September 20, 2026",
-                        requirements: "Wards of Heavy Commercial Vehicle Drivers + Minimum 60% in Board",
-                        overview: "A specialized welfare scholarship initiative targeting children of heavy commercial transport drivers across India to fund diploma and technical graduate courses seamlessly.",
-                        application_url: "https://jktyre.com",
-                        faq_q1: "Who can register inside this pipeline?",
-                        faq_a1: "Strictly wards of commercial transport driving license holders who are entering technical courses.",
-                        faq_q2: "What document files must be verified?",
-                        faq_a2: "Valid commercial licenses, state income sheets, and institutional seat slips must be loaded."
-                    },
-                    {
-                        category: "Business",
-                        title: "RAMAN KANT MUNJAL SCHOLARSHIPS 2026-27",
-                        offered_by: "Raman Kant Munjal Foundation & Hero Group",
-                        amount: "Up to ₹5,000 / Month Living Allowance",
-                        deadline: "September 30, 2026",
-                        requirements: "1st Year BBA, B.Com, BMS or IPMAT Streams + Income < 4L",
-                        overview: "Elite private foundational scholarship program managed by the Hero Group targeting outstanding management and finance tracking undergraduate aspirants across premium state universities.",
-                        application_url: "https://rkmfoundation.org",
-                        faq_q1: "Is this limited to management fields?",
-                        faq_a1: "Yes, it targets management, economics, corporate finance, and integrated business degree paths exclusively.",
-                        faq_q2: "Are hostel accommodations handled?",
-                        faq_a2: "The flat monthly stipend can be assigned cleanly to cover residential hostel bills or library logistics."
                     }
                 ];
                 initializeInterfacePipeline();
             }
         }
-
         function initializeInterfacePipeline() {
             renderFilterChips();
             renderInterface();
@@ -421,7 +392,6 @@
             document.querySelectorAll('.tab-pane-content').forEach(pane => pane.classList.remove('active'));
             
             document.getElementById('trigger-' + tabName).classList.add('active');
-            document.getElementById('pane-' + tabName).classList.add('active');
         }
 
         function closeDetailsWindow() {
