@@ -95,73 +95,62 @@
         </div>
     </footer>
 
-    <script>
-               // Dynamic system array variable to hold the scraped ledger items
+      <script>
+        // Global storage matrix for your automated data
         let grandDatabase = [];
         let activeCategory = 'All';
 
-        // AUTOMATED RECOVERY SYNC ENGINE: Reads the text blocks from your desktop json file
+        // LIVE PIPELINE ENGINE: Reads directly from your cloud live_database.json file
         async function fetchScholarshipDatabase() {
             try {
                 const response = await fetch('live_database.json');
                 if (!response.ok) {
-                    throw new Error("Local database file not synced yet.");
+                    throw new Error("Cloud file not reachable yet.");
                 }
                 grandDatabase = await response.json();
                 renderInterface(grandDatabase);
             } catch (error) {
-                console.log("Ingestion point charging. Loading diagnostic matrix defaults.");
-                // High-yield fallback catalog arrays to preserve luxury layout rendering if network is sleeping
+                console.log("Syncing database streams. Utilizing live memory fallback arrays...");
+                // Emergency fallback data to ensure layout never stays blank if the server is resetting
                 grandDatabase = [
+                    {
+                        category: "Engineering",
+                        title: "Reliance Foundation Undergraduate Scholarships 2026-27",
+                        offered_by: "Reliance Foundation Corporate CSR",
+                        amount: "Up to ₹2,00,000 Educational Allowance",
+                        deadline: "November 15, 2026 (Live Portal)",
+                        requirements: "1st Year Full-Time Degree Students + Income < 15L",
+                        overview: "A prestigious private corporate grant aimed at supporting meritorious students pursuing full-time technical graduation paths across India."
+                    },
                     {
                         category: "Govt",
                         title: "PM-USP Central Sector Scholarship Scheme",
-                        offered_by: "Ministry of Education, Govt of India",
+                        offered_by: "Department of Higher Education, Ministry of Education",
                         amount: "₹20,000 / Year Flat Academic Grant",
-                        deadline: "October 31, 2026 (Active Intake)",
+                        deadline: "October 31, 2026 (Active Application)",
                         requirements: "Family Income < 4.5L + Above 80th Percentile in Board",
-                        overview: "Central sector support architecture for top-tier undergraduate college rankers. Requires validated profiles on the National Scholarship Portal."
-                    },
-                    {
-                        category: "Engineering",
-                        title: "Reliance Foundation Undergraduate Scholarships",
-                        offered_by: "Reliance Foundation Corporate CSR",
-                        amount: "Up to ₹2,00,000 Flat Educational Allowance",
-                        deadline: "November 15, 2026 (Live Application Window)",
-                        requirements: "First-year regular student + Family Income < 15L",
-                        overview: "Premium private sector grant designed to support meritorious Indian students pursuing full-time undergraduate engineering and degree courses."
+                        overview: "Flagship central sector support scheme for undergraduate university rankers. Requires mandatory registration profiles on the official National Scholarship Portal."
                     }
                 ];
                 renderInterface(grandDatabase);
             }
         }
 
-
-        // UI Card Component Matrix Generator Engine
         function renderInterface(dataset) {
             const listWrapper = document.getElementById('dashboard-view');
             listWrapper.innerHTML = '';
-
             if (dataset.length === 0) {
-                listWrapper.innerHTML = `
-                    <div style="text-align:center; padding:48px 24px; color:#64748b; background:#0d1321; border-radius:16px; border:1px solid #1e293b; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                        <div style="font-size: 2rem; color: #d4af37;">🔍</div>
-                        <div style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-top: 12px;">No matching records located inside current ledger filters.</div>
-                    </div>`;
+                listWrapper.innerHTML = `<div style="text-align:center; padding:48px 24px; color:#64748b; background:#0d1321; border-radius:16px; border:1px solid #1e293b;"><div style="font-size: 2rem; color: #d4af37;">🔍</div><div style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-top:12px;">No matching records found inside the ledger query.</div></div>`;
                 return;
             }
-
             dataset.forEach(item => {
                 listWrapper.innerHTML += `
                     <div class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
-                            <div>
-                                <span class="badge">${item.category} Matrix</span>
-                                <h2 class="card-title" style="margin-top: 10px;">${item.title}</h2>
-                                <p class="card-sub">Verified Record • Administered by ${item.offered_by}</p>
-                            </div>
+                        <div>
+                            <span class="badge">${item.category} Matrix</span>
+                            <h2 class="card-title" style="margin-top: 10px;">${item.title}</h2>
+                            <p class="card-sub">Verified Ledger • Administered by ${item.offered_by}</p>
                         </div>
-
                         <div class="info-panel">
                             <div class="info-col">
                                 <div class="info-label">Benefits & Rewards</div>
@@ -176,24 +165,17 @@
                                 <div class="info-value dark">${item.requirements}</div>
                             </div>
                         </div>
-
-                        <div class="overview-box">
-                            ${item.overview}
-                        </div>
-                    </div>
-                `;
+                        <div class="overview-box">${item.overview}</div>
+                    </div>`;
             });
         }
 
-        // Logic Filter & Query Calculations Array Engine
         let activeCategory = 'All';
         function filterStream(category) {
             activeCategory = category;
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            if (window.event && window.event.target) {
-                window.event.target.classList.add('active');
-            }
+            if (window.event && window.event.target) { window.event.target.classList.add('active'); }
             executeSearch();
         }
 
@@ -209,9 +191,9 @@
             renderInterface(matchingOutput);
         }
 
-        // Boot Bootstrapping Initializer
+        // Initialize dynamic fetch trigger engine
         fetchScholarshipDatabase();
-
     </script>
 </body>
 </html>
+
