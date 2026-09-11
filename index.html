@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScholarSieve - Premium Student Data Vault</title>
     <style>
-        /* Luxury Elite Brand Framework (Works 100% Offline) */
+        /* Luxury Elite Brand Framework */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             background-color: #090d16; /* Deep Midnight Obsidian */
@@ -42,7 +42,7 @@
             background: #0d1321; border: 1px solid #1e293b; padding: 10px 20px; border-radius: 30px; font-size: 0.8rem; font-weight: 700; color: #94a3b8; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em;
         }
         .filter-btn:hover, .filter-btn.active { background: #d4af37; color: #090d16; border-color: #d4af37; }
-        .card { background: #0d1321; border: 1px solid #1e293b; border-radius: 16px; padding: 28px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .card { background: #0d1321; border: 1px solid #1e293b; border-radius: 16px; padding: 28px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-align: left; }
         .badge { display: inline-block; font-size: 0.65rem; font-weight: 800; color: #d4af37; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); padding: 6px 12px; border-radius: 6px; text-transform: uppercase; width: max-content; }
         .card-title { font-size: 1.4rem; font-weight: 800; color: #ffffff; }
         .card-sub { font-size: 0.85rem; color: #64748b; margin-top: 2px; }
@@ -95,24 +95,32 @@
         </div>
     </footer>
 
-      <script>
-        // Global storage matrix for your automated data
+    <script>
         let grandDatabase = [];
         let activeCategory = 'All';
 
-        // LIVE PIPELINE ENGINE: Reads directly from your cloud live_database.json file
+        // LIVE PIPELINE ENGINE: Reads data structures
         async function fetchScholarshipDatabase() {
             try {
                 const response = await fetch('live_database.json');
                 if (!response.ok) {
-                    throw new Error("Cloud file not reachable yet.");
+                    throw new Error("Data file target missing.");
                 }
                 grandDatabase = await response.json();
                 renderInterface(grandDatabase);
             } catch (error) {
-                console.log("Syncing database streams. Utilizing live memory fallback arrays...");
-                // Emergency fallback data to ensure layout never stays blank if the server is resetting
+                console.log("Loading memory matrix defaults.");
+                // Hardcoded fallback data array to guarantee cards display immediately
                 grandDatabase = [
+                    {
+                        category: "Govt",
+                        title: "PM-USP Central Sector Scholarship Scheme",
+                        offered_by: "Department of Higher Education, Ministry of Education",
+                        amount: "₹20,000 / Year Flat Academic Grant",
+                        deadline: "October 31, 2026 (Active Intake)",
+                        requirements: "Family Income < 4.5L + Above 80th Percentile in Board",
+                        overview: "Central sector support architecture for top-tier undergraduate college rankers. Requires validated profiles on the National Scholarship Portal."
+                    },
                     {
                         category: "Engineering",
                         title: "Reliance Foundation Undergraduate Scholarships 2026-27",
@@ -124,23 +132,81 @@
                     },
                     {
                         category: "Govt",
-                        title: "PM-USP Central Sector Scholarship Scheme",
-                        offered_by: "Department of Higher Education, Ministry of Education",
-                        amount: "₹20,000 / Year Flat Academic Grant",
-                        deadline: "October 31, 2026 (Active Application)",
-                        requirements: "Family Income < 4.5L + Above 80th Percentile in Board",
-                        overview: "Flagship central sector support scheme for undergraduate university rankers. Requires mandatory registration profiles on the official National Scholarship Portal."
-                    }
-                ];
-                renderInterface(grandDatabase);
+                        title: "PM YASASVI Top Class Education Grant",
+                        offered_by: "Ministry of Social Justice & Empowerment, India",
+                        amount: "Full Tuition Fee Coverage + Hostel Stipends",
+                        deadline: "October 31, 2026 (Applications Open)",
+                        requirements: "OBC / EBC / DNT Categories + Income < 2.5L",
+                        overview: "High-yield state-managed welfare program targeting premium national technical engineering and medical institutes."
+                    },
+                    {
+                        category: "Engineering",
+                        title: "BITSAT Higher Education Registry",
+                        offered_by: "BITS Pilani",
+                        amount: "Merit Allocations up to 100% Tuition Waiver",
+                        deadline: "April 2027 (Upcoming Cycle)",
+                        requirements: "PCM Aggregate > 75% in Class 12 Boards",
+                        overview: "Official institutional testing sequence for integrated B.E. programs. Internal algorithms evaluate need metrics post-enrollment."
+                    },
+                    {
+                        category: "Business",
+                        title: "IPMAT Integrated Management Tracking Node",
+                        offered_by: "IIM Indore / Rohtak",
+                        amount: "Need-Based System Fee Waivers",
+                        deadline: "May 2027 (Annual Portal Close)",
+                        requirements: "Class 10 & 12 Board Clearance Mark Cut-offs",
+                        overview: "Elite testing structure for the 5-year integrated Bachelor + MBA management stream."
+            {
+                category: "Engineering",
+                title: "DST INSPIRE Scholarship for Higher Education (SHE)",
+                offered_by: "Department of Science & Technology, Govt of India",
+                amount: "₹80,000 / Year Cash Stipend + Research Mentorship",
+                deadline: "December 31, 2026 (Annual Application Cycle)",
+                requirements: "Top 1% Rankers in Class 12 Boards pursuing Basic Sciences",
+                overview: "Highly competitive central government program designed to attract talent to core sciences and engineering research tracks right post-school."
+            },
+            {
+                category: "Govt",
+                title: "Kotak Kanya Scholarship Program 2026-27",
+                offered_by: "Kotak Mahindra Education Foundation (CSR Initiative)",
+                amount: "₹1,50,000 / Year flat support until Graduation",
+                deadline: "October 31, 2026 (Live Intake Open)",
+                requirements: "Meritorious Girl Students + 1st Year B.Tech/MBBS/LL.B + Income < 6L",
+                overview: "Exclusive private foundation fellowship providing complete tuition, library, and hostel expense coverage to highly capable female professional track scholars."
+            },
+            {
+                category: "Govt",
+                title: "HDFC Bank Badhte Kadam Scholarship Portal",
+                offered_by: "HDFC Bank CSR Department",
+                amount: "Up to ₹1,00,000 Academic Expense Allocation",
+                deadline: "November 30, 2026 (Portal Active)",
+                requirements: "General Graduation / Professional Students + Income < 6L",
+                overview: "A massive, widely targeted corporate support framework created to reduce fee stresses for general and technical stream students across premium state institutions."
+            },
+            {
+                category: "Engineering",
+                title: "AICTE Pragati Scholarship for Girl Candidates",
+                offered_by: "All India Council for Technical Education, India",
+                amount: "₹50,000 / Year Flat Technical Contingency Allowance",
+                deadline: "October 31, 2026 (Annual Intake System)",
+                requirements: "Female Candidate + Admitted to 1st Year Degree/Diploma Course",
+                overview: "A specialized government advancement platform targeting female engineers to fund textbooks, compute rigs, and residential living costs cleanly."
+            },
+            {
+                category: "Medical",
+                title: "Swarnajayanti Jagadis Bose Science Fellowship",
+                offered_by: "JBNSTS National Board Matrix",
+                amount: "Stipends + Book Grants + Advanced Research Portals",
+                deadline: "September 30, 2026 (Registration Closing)",
+                requirements: "Undergraduate Basic Science & Professional Stream Enrollment",
+                overview: "Elite regional-cum-national screening sequence evaluating pure scientific aptitude and providing foundational hardware and academic grants."
             }
-        }
-
+        ];
         function renderInterface(dataset) {
             const listWrapper = document.getElementById('dashboard-view');
             listWrapper.innerHTML = '';
             if (dataset.length === 0) {
-                listWrapper.innerHTML = `<div style="text-align:center; padding:48px 24px; color:#64748b; background:#0d1321; border-radius:16px; border:1px solid #1e293b;"><div style="font-size: 2rem; color: #d4af37;">🔍</div><div style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-top:12px;">No matching records found inside the ledger query.</div></div>`;
+                listWrapper.innerHTML = `<div style="text-align:center; padding:48px 24px; color:#64748b; background:#0d1321; border-radius:16px; border:1px solid #1e293b;"><div style="font-size: 2rem; color: #d4af37;">🔍</div><div style="font-size: 0.95rem; font-weight: 700; color: #ffffff; margin-top:12px;">No matching records located inside the ledger query filters.</div></div>`;
                 return;
             }
             dataset.forEach(item => {
@@ -170,7 +236,6 @@
             });
         }
 
-        let activeCategory = 'All';
         function filterStream(category) {
             activeCategory = category;
             const buttons = document.querySelectorAll('.filter-btn');
@@ -191,9 +256,8 @@
             renderInterface(matchingOutput);
         }
 
-        // Initialize dynamic fetch trigger engine
+        // Initialize core fetch connection parameters on load configuration
         fetchScholarshipDatabase();
     </script>
 </body>
 </html>
-
