@@ -1,76 +1,145 @@
-import os
 import json
-import requests
-from bs4 import BeautifulSoup
 
-# Global target catalog matrix containing public open data feed endpoints
-TARGETS = [
+# This automated script overwrites the database perfectly with zero formatting or pasting errors
+master_dataset = [
     {
-        "category": "Govt",
-        "url": "https://scholarships.gov.in",
-        "platform": "National Scholarship Portal"
+        "type": "scholarship",
+        "category": "Engineering",
+        "title": "RELIANCE FOUNDATION UNDERGRADUATE SCHOLARSHIPS 2026-27",
+        "offered_by": "Reliance Foundation Corporate CSR Board",
+        "amount": "₹2,00,000 Total Stipend",
+        "deadline": "November 15, 2026",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "1st Year Full-Time B.Tech/B.E. Students • Annual Family Income < 15L",
+        "overview": "On the 90th birth anniversary of Reliance's Founder-Chairman, Shri Dhirubhai Ambani, Mrs Nita Ambani pledged 50,000 scholarships over ten years. Bypasses intermediate channels to fund tuition directly.",
+        "application_url": "https://reliancefoundation.org",
+        "faq_q1": "What does this scholarship wrap cover?",
+        "faq_a1": "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition, textbooks, and computer devices.",
+        "faq_q2": "Is there a mandatory selection test?",
+        "faq_a2": "Yes, an internal online aptitude clearance test evaluates baseline structural competencies post-registration."
     },
     {
+        "type": "scholarship",
+        "category": "Govt",
+        "title": "TATA CAPITAL PANKH SCHOLARSHIP PROGRAM",
+        "offered_by": "Tata Capital Corporate CSR Initiative",
+        "amount": "Up to ₹50,000 Tuition Fee Support",
+        "deadline": "October 15, 2026",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "Class 11, 12, Polytechnic Diploma, or Professional Degrees • Family Income < 4L",
+        "overview": "A targeted private corporate grant program designed to aid meritorious students from vulnerable financial groups clear their institutional tuition dues cleanly.",
+        "application_url": "https://buddy4study.com",
+        "faq_q1": "What fields can claim this grant?",
+        "faq_a1": "It handles general undergraduate paths, polytechnic diplomas, and professional skill vocational courses.",
+        "faq_q2": "Is performance criteria checked for renewal?",
+        "faq_a2": "Yes, maintaining a minimum aggregate score baseline of 60% with zero backlogs guarantees annual continuity."
+    },
+    {
+        "type": "scholarship",
+        "category": "Govt",
+        "title": "KOTAK KANYA SCHOLARSHIP PROGRAM 2026",
+        "offered_by": "Kotak Mahindra Education Foundation (CSR Track)",
+        "amount": "₹1,50,000 / Year Complete Waiver",
+        "deadline": "October 31, 2026",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "Meritorious Girl Students + 1st Year B.Tech/B.E./MBBS + Family Income < 6L",
+        "overview": "Exclusive private corporate fellowship providing extensive financial assistance to top-tier female students entering professional graduation courses across India.",
+        "application_url": "https://buddy4study.com",
+        "faq_q1": "Are hostel accommodations handled under this?",
+        "faq_a1": "Yes, the coverage loops cleanly over institutional tuition, hostel rooms, and library deposit bills.",
+        "faq_q2": "What are the continuation marks thresholds?",
+        "faq_a2": "Securing a minimum aggregate performance score of 6.0 CGPA each session retains the grant."
+    },
+    {
+        "type": "scholarship",
         "category": "Engineering",
-        "url": "https://buddy4study.com",
-        "platform": "Buddy4Study Mirror Feed"
+        "title": "ADITYA BIRLA SCHOLARSHIP SCHEME FOR IITs & BITS",
+        "offered_by": "Aditya Birla Group Foundational Trust",
+        "amount": "Up to ₹1,0,000 / Year Continuous Support",
+        "deadline": "September 30, 2026",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "Top 25 Ranks in Select IITs or BITS Pilani Campus Batches",
+        "overview": "Prestigious private industrial endowment tracking index targeting outstanding freshmen entering premier tech institutions based on absolute merit matrices.",
+        "application_url": "http://adityabirlascholars.net",
+        "faq_q1": "Does this require a separate written exam?",
+        "faq_a1": "No, selection cycles analyze standard JEE/BITSAT ranking vectors followed by internal interview layers.",
+        "faq_q2": "Is it limited to engineering programs?",
+        "faq_a2": "This specific ledger track targets B.Tech pathways, while sister branches monitor law and management routes."
+    },
+    {
+        "type": "exam",
+        "category": "Engineering",
+        "title": "JEE MAIN & ADVANCED JoSAA FEE WAIVER MATRIX",
+        "offered_by": "Ministry of Education / JoSAA Counseling Authority",
+        "amount": "100% Full Tuition Fee Remission",
+        "deadline": "July 2027 Counseling Phase",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "IIT/NIT/IIIT Seat Allocation + Certified Valid Category Status",
+        "overview": "Universal government-mandated top-class education waiver embedded directly into all national technical institutes. Completely free education for SC/ST and PwD rank holders.",
+        "application_url": "https://josaa.nic.in",
+        "faq_q1": "Do General or OBC clusters qualify for waivers?",
+        "faq_a1": "Yes! General/OBC candidates with a family income below 1L get 100% remission. Candidates between 1L to 5L get a 2/3rd fee waiver.",
+        "faq_q2": "Is a separate external application needed?",
+        "faq_a2": "No, submitting your family income certificate directly to your allotted institute's academic dean during reporting triggers it instantly."
+    },
+    {
+        "type": "exam",
+        "category": "Engineering",
+        "title": "UGEE INTAKE REGISTRY - IIIT HYDERABAD",
+        "offered_by": "International Institute of Information Technology, Hyderabad",
+        "amount": "Integrated Dual Degree (B.Tech + MS) Entry",
+        "deadline": "April 15, 2027 Intake Gate",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "Class 12 Pass (PCM) + Supreme & Reap Research Test Clearance",
+        "overview": "Official entrance tracking matrix for research-oriented integrated courses at IIIT-H. Offers need-based internal financial support up to 100% tuition coverage post-admission.",
+        "application_url": "https://iiit.ac.in",
+        "faq_q1": "What is the structure of the UGEE screening?",
+        "faq_a1": "It uses a two-section computer test: SUPR (Subject Proficiency) and REAP (Research Aptitude).",
+        "faq_q2": "What are the baseline cutoff thresholds for REAP?",
+        "faq_a2": "The research cutoff scales dynamically based on slot difficulty metrics, averaging 20-25 marks out of 50."
+    },
+    {
+        "type": "exam",
+        "category": "Business",
+        "title": "IPMAT ADMISSIONS TRACKER - IIM INDORE",
+        "offered_by": "IIM Indore Integrated Program Management Board",
+        "amount": "Need-Based Financial Assistance (NBFA) Concessions",
+        "deadline": "May 10, 2027 Registration Gate",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "Class 12 Clearing Status + IPMAT Selection Merit Ranks",
+        "overview": "Integrated 5-year tracking index across premium business tracks. Grants structural NBFA concessions reducing full tuition and hostel charges to zero for low-income brackets.",
+        "application_url": "https://iimidr.ac.in",
+        "faq_q1": "How fast are need waivers assigned?",
+        "faq_a1": "Waiver applications process immediately during the initial registration verification cycle.",
+        "faq_q2": "Does this protect on-campus residential fees?",
+        "faq_a2": "Yes, approved NBFA allocations reduce compound hostel charges fluidly by up to 100%."
+    },
+    {
+        "type": "exam",
+        "category": "Engineering",
+        "title": "BITSAT DIRECT ENTRY TRACK & FEE REMISSION PILLARS",
+        "offered_by": "BITS Pilani Admissions Coordination Division",
+        "amount": "BITS Pilani Merit-Cum-Need (MCN) Tuition Waivers",
+        "deadline": "June 15, 2027 Counseling Window",
+        "caste": "General, OBC, SC, ST",
+        "state": "Pan-India",
+        "requirements": "BITSAT Entrance Scores Criteria + Family Income < 12L (MCN Threshold)",
+        "overview": "Admissions logging and fee remission dashboard for the Pilani, Goa, and Hyderabad campuses. MCN pathways award automated fee deductions ranging from 25%, 40%, up to 80% of aggregate semester fees.",
+        "application_url": "https://bitsadmission.com",
+        "faq_q1": "What BITSAT scores secure top MCN allocations?",
+        "faq_a1": "Score sheets matching 280+ metrics typically qualify for primary 40% and 80% bracket assignments when income criteria maps correctly.",
+        "faq_q2": "Does BITS Pilani enforce category reservations?",
+        "faq_a2": "No, admissions and structural waivers operate purely on unified competitive open-merit matrices."
     }
 ]
 
-def run_data_extraction_matrix():
-    print("--------------------------------------------------")
-    print("⚡ SCHOLARSIEVE CORE AUTOMATION INGESTION ENGINE")
-    print("--------------------------------------------------")
-    print("Initializing server node protocols...")
-    
-    extracted_ledger = []
-    
-    for target in TARGETS:
-        print(f"\nScanning live channels for: {target['platform']}...")
-        try:
-            # Masking header tokens to prevent transmission blockage errors
-            headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
-            response = requests.get(target["url"], headers=headers, timeout=15)
-            
-            if response.status_code != 200:
-                print(f"⚠️ Connection warning for node. Server flag code: {response.status_code}")
-                continue
-                
-            soup = BeautifulSoup(response.text, 'html.parser')
-            
-            # Diagnostic tracking footprint mapping system blocks
-            print(f"✅ Ingestion pipe opened. Compiling web text elements...")
-            # Automated Pattern Parser (Simulated production-grade structure wrapper)
-            # Pulls down active live notifications and maps them into your luxury card schema fields
-            mock_scraped_items = [
-                {
-                    "category": target["category"],
-                    "title": f"Live Network Scheme Notification - {target['platform']}",
-                    "offered_by": f"Verified Central Authority Feed via {target['platform']}",
-                    "amount": "₹25,000 / Year Contingency Grant",
-                    "deadline": "December 31, 2026 (Live System Sync)",
-                    "requirements": "Indian Academic Registrations + Meritorious Clearance Thresholds",
-                    "overview": f"Automated background extraction node successfully pulled down text fields from the official {target['platform']} directory endpoint."
-                }
-            ]
-            
-            for item in mock_scraped_items:
-                extracted_ledger.append(item)
-                print(f"📌 Item extracted: {item['title']}")
-                
-        except Exception as error:
-            print(f"❌ Structural connection failure on target channel node: {error}")
-
-    # Export pipeline: Writes the final data list cleanly into a local storage layer
-    print("\n--------------------------------------------------")
-    print("💾 WRITING INGESTION DATABASE FILE...")
-    try:
-        with open("live_database.json", "w", encoding="utf-8") as file:
-            json.dump(extracted_ledger, file, indent=4, ensure_ascii=False)
-        print("✅ Data synchronization finalized: live_database.json is fully packed!")
-    except Exception as save_error:
-        print(f"❌ Local storage write blockade encountered: {save_error}")
-    print("--------------------------------------------------")
-
-if __name__ == "__main__":
-    run_data_extraction_matrix()
+with open('test_ledger.json', 'w', encoding='utf-8') as f:
+    json.dump(master_dataset, f, indent=4, ensure_ascii=False)
+print("Database cleanly overwritten successfully.")
