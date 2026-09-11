@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ScholarSieve - Premium Student Data Vault</title>
     <style>
-        /* Niche-Inspired Premium Minimalist Clean UI Framework */
+        /* Niche Elegant Sage-Green Brand UI Framework */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: #f4f7f6; /* Soft, warm pearl tone for better contrast */
-            color: #1a202c;
+            background-color: #f4f8f6; /* Premium soft organic warm gray/green canvas */
+            color: #1c2826;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
             display: flex;
             flex-direction: column;
@@ -19,7 +19,7 @@
         
         nav {
             background: #ffffff;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e1e9e6;
             padding: 16px 48px;
             display: flex;
             justify-content: space-between;
@@ -36,7 +36,7 @@
             text-transform: uppercase; 
         }
         .logo span { 
-            color: #718096; 
+            color: #608074; 
             font-weight: 300; 
             border-left: 1px solid #cbd5e0; 
             margin-left: 8px; 
@@ -65,90 +65,105 @@
         .notif-tag { font-size: 0.65rem; font-weight: 700; color: #00664f; text-transform: uppercase; }
         .notif-title { font-size: 0.85rem; font-weight: 500; color: #2d3748; }
         
-        main { max-width: 1000px; width: 95%; margin: 40px auto; }
-        .hero { margin-bottom: 40px; }
-        .hero h1 { font-size: 2.4rem; font-weight: 700; color: #004d3d; letter-spacing: -0.02em; }
-        .hero p { color: #4a5568; font-size: 1rem; line-height: 1.6; margin-top: 10px; max-width: 700px; }
+        /* POSITIVE NICHE BRAND HEADER ACCENT */
+        .hero-banner-accent {
+            background: linear-gradient(135deg, #eaf5f2 0%, #dbeee8 100%);
+            border-bottom: 1px solid #d0ded9;
+            padding: 56px 48px 80px 48px;
+            text-align: center;
+        }
+        .hero-banner-accent h1 { font-size: 2.6rem; font-weight: 800; color: #004d3d; letter-spacing: -0.02em; }
+        .hero-banner-accent p { color: #3b5950; font-size: 1.05rem; line-height: 1.6; margin-top: 10px; max-width: 680px; margin-left: auto; margin-right: auto; }
+
+        main { max-width: 1000px; width: 95%; margin: -40px auto 64px auto; position: relative; z-index: 10; }
         
+        /* Layout Split Section Titles */
+        .dashboard-section-header {
+            font-size: 1.1rem; font-weight: 800; color: #004d3d; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 48px; margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+        }
+        .dashboard-section-header::after { content: ''; flex-grow: 1; height: 1px; background: #cbdcd7; }
+        
+        /* Interactive Search & Premium Filter Panel Controls */
+        .search-controls-container {
+            background: #ffffff; border: 1px solid #cbdcd7; border-radius: 16px; padding: 24px; box-shadow: 0 10px 25px rgba(0, 77, 61, 0.04); display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;
+        }
+        .search-box-row { display: flex; gap: 12px; width: 100%; flex-wrap: wrap; }
         .search-box {
-            width: 100%; max-width: 480px; padding: 12px 16px; background: #ffffff; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 0.95rem; color: #1a202c; outline: none; margin-bottom: 28px; transition: all 0.2s ease;
+            flex-grow: 1; padding: 14px 18px; background: #f4f8f6; border: 1px solid #cbdcd7; border-radius: 10px; font-size: 0.95rem; color: #1a202c; outline: none; transition: all 0.2s; min-width: 260px;
         }
-        .search-box:focus { border-color: #00664f; box-shadow: 0 0 0 3px rgba(0, 102, 79, 0.1); }
+        .search-box:focus { border-color: #004d3d; background: #ffffff; box-shadow: 0 0 0 3px rgba(0, 77, 61, 0.1); }
         
-        /* Premium Category Selectors Configuration */
-        .filter-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid #e2e8f0; }
-        .filter-btn {
-            background: #ffffff; border: 1px solid #cbd5e0; padding: 8px 16px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; color: #4a5568; cursor: pointer; transition: all 0.2s;
+        .interactive-select-node {
+            padding: 14px 18px; background: #ffffff; border: 1px solid #cbdcd7; border-radius: 10px; font-size: 0.9rem; font-weight: 600; color: #3b5950; outline: none; cursor: pointer; min-width: 160px;
         }
-        .filter-btn:hover, .filter-btn.active { background: #e6f0ed; color: #004d3d; border-color: #004d3d; }
-        .filter-count { display: inline-block; background: rgba(0, 77, 61, 0.1); color: #004d3d; font-size: 0.75rem; padding: 2px 6px; border-radius: 10px; margin-left: 6px; font-weight: 700; }
+        .interactive-select-node:focus { border-color: #004d3d; }
         
         /* Pristine Scholarship Registry Cards Layout */
-        .card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 28px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.01); text-align: left; position: relative; }
-        .card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+        .card { background: #ffffff; border: 1px solid #cbdcd7; border-radius: 14px; padding: 28px; margin-bottom: 24px; display: flex; flex-direction: column; gap: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); text-align: left; position: relative; }
+        .card:hover { box-shadow: 0 8px 24px rgba(0, 77, 61, 0.05); border-color: #a3cbd6; }
         
-        .sponsored-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: #dd6b20; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: -4px; }
-        .card-title { font-size: 1.35rem; font-weight: 700; color: #1a202c; transition: color 0.2s; cursor: pointer; text-transform: uppercase; }
+        .sponsored-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; color: #004d3d; background: #eaf5f2; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.05em; width: max-content; }
+        .card-title { font-size: 1.35rem; font-weight: 700; color: #1c2826; transition: color 0.2s; cursor: pointer; }
         .card-title:hover { color: #00664f; }
-        .card-sub { font-size: 0.85rem; color: #718096; margin-top: -4px; }
+        .card-sub { font-size: 0.85rem; color: #608074; margin-top: -4px; }
         
         /* NICHE PLATFORM LOGO METRIC VECTOR GRAPHICS ICONS GRID */
         .info-panel { display: flex; gap: 36px; background: transparent; padding: 12px 0; border: none; flex-wrap: wrap; }
         .info-col { display: flex; align-items: center; gap: 12px; }
         .vector-badge-container {
-            width: 38px; height: 38px; border-radius: 50%; background: #e6f0ed; display: flex; align-items: center; justify-content: center; color: #004d3d;
+            width: 38px; height: 38px; border-radius: 50%; background: #eaf5f2; display: flex; align-items: center; justify-content: center; color: #004d3d;
         }
         .info-text-group { display: flex; flex-direction: column; }
-        .info-label { font-size: 0.7rem; font-weight: 600; color: #718096; text-transform: uppercase; letter-spacing: 0.02em; }
+        .info-label { font-size: 0.7rem; font-weight: 600; color: #608074; text-transform: uppercase; letter-spacing: 0.02em; }
         .info-value { font-size: 0.95rem; font-weight: 700; color: #2d3748; margin-top: 1px; }
         
-        .overview-box { font-size: 0.92rem; color: #4a5568; line-height: 1.6; margin-top: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .overview-box { font-size: 0.92rem; color: #4a5568; line-height: 1.6; margin-top: 4px; }
         
         /* Sleek Right-Aligned Action Utilities Panel */
-        .card-actions-row { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 12px; border-top: 1px solid #f0f4f8; padding-top: 16px; }
+        .card-actions-row { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-top: 12px; border-top: 1px solid #e1e9e6; padding-top: 16px; }
         .btn-action-node {
             padding: 10px 24px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; text-decoration: none; text-align: center; display: inline-block; outline: none; border: none;
         }
         .btn-action-node.secondary {
-            background: transparent; border: 1px solid #cbd5e0; color: #4a5568;
+            background: transparent; border: 1px solid #cbdcd7; color: #3b5950;
         }
-        .btn-action-node.secondary:hover { background: #f7f9fa; border-color: #a0aec0; color: #1a202c; }
+        .btn-action-node.secondary:hover { background: #f4f8f6; color: #1c2826; }
         .btn-action-node.primary {
             background: #004d3d; color: #ffffff; padding: 10px 32px; font-weight: 700;
         }
         .btn-action-node.primary:hover { background: #00664f; }
+        
         /* TABULAR DISPLAY PANEL SYSTEM DESIGN REPLICA */
         .details-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); z-index: 1000; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.2s ease;
         }
         .details-overlay.active { opacity: 1; pointer-events: auto; }
         .details-window {
-            background: #ffffff; border: 1px solid #e2e8f0; width: 92%; max-width: 680px; border-radius: 12px; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; animation: slideUp 0.2s ease;
+            background: #ffffff; border: 1px solid #cbdcd7; width: 92%; max-width: 680px; border-radius: 12px; max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.1); position: relative; animation: slideUp 0.2s ease;
         }
         @keyframes slideUp { from { transform: translateY(10px); } to { transform: translateY(0); } }
         .close-btn { position: absolute; top: 16px; right: 20px; font-size: 1.6rem; color: #a0aec0; cursor: pointer; background: none; border: none; outline: none; }
         .close-btn:hover { color: #4a5568; }
         .window-body { padding: 36px; display: flex; flex-direction: column; gap: 24px; text-align: left; }
         
-        .tab-menu-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #f7f9fa; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; margin-top: 4px; }
+        .tab-menu-bar { display: grid; grid-template-columns: repeat(3, 1fr); background: #f4f8f6; border: 1px solid #cbdcd7; border-radius: 8px; overflow: hidden; margin-top: 4px; }
         .tab-trigger-btn {
-            background: transparent; border: none; padding: 12px; color: #718096; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; outline: none;
+            background: transparent; border: none; padding: 12px; color: #608074; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; outline: none;
         }
         .tab-trigger-btn:hover { color: #004d3d; }
         .tab-trigger-btn.active { background: #004d3d; color: #ffffff; font-weight: 700; }
         .tab-pane-content { display: none; margin-top: 4px; line-height: 1.6; font-size: 0.95rem; color: #4a5568; }
         .tab-pane-content.active { display: block; }
-        
-        .section-headline { font-size: 0.75rem; font-weight: 700; color: #004d3d; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
+               .section-headline { font-size: 0.75rem; font-weight: 700; color: #004d3d; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; border-bottom: 1px solid #e1e9e6; padding-bottom: 4px; }
         .faq-block-row { margin-bottom: 12px; }
-        .faq-question-text { font-weight: 700; color: #1a202c; margin-bottom: 2px; }
+        .faq-question-text { font-weight: 700; color: #1c2826; margin-bottom: 2px; }
         .apply-now-btn {
-            background: #004d3d; color: #ffffff; text-decoration: none; width: 100%; text-align: center; padding: 14px; border-radius: 6px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 8px; display: block; transition: background 0.2s ease;
+            background: #004d3d; color: #ffffff; text-decoration: none; width: 100%; text-align: center; padding: 14px; border-radius: 8px; font-weight: 700; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.02em; margin-top: 8px; display: block; transition: background 0.2s ease;
         }
         .apply-now-btn:hover { background: #00664f; }
 
-        footer { background: #ffffff; border-top: 1px solid #e2e8f0; padding: 32px; margin-top: 64px; text-align: center; }
-        .founder-card { display: flex; align-items: center; gap: 14px; background: #f7f9fa; border: 1px solid #e2e8f0; padding: 12px 24px; border-radius: 8px; max-width: 320px; margin: 16px auto 0 auto; text-align: left; }
+        footer { background: #ffffff; border-top: 1px solid #e1e9e6; padding: 32px; margin-top: 64px; text-align: center; }
+        .founder-card { display: flex; align-items: center; gap: 14px; background: #f4f8f6; border: 1px solid #cbdcd7; padding: 12px 24px; border-radius: 8px; max-width: 320px; margin: 16px auto 0 auto; text-align: left; }
         .founder-avatar { width: 38px; height: 38px; border-radius: 50%; background: #004d3d; color: #ffffff; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1rem; }
     </style>
 </head>
@@ -167,19 +182,39 @@
         </div>
     </nav>
 
+    <div class="hero-banner-accent">
+        <h1>Find college scholarships & exams</h1>
+        <p>Discover direct academic funding and track elite national engineering, management, and medical entry gates with smart caste filters and direct registration portals.</p>
+    </div>
+
     <main>
-        <div class="hero">
-            <h1>Find college scholarships</h1>
-            <p>Discover new opportunities and apply to scholarships by choosing a category below. Read verified parameters curated automatically via secure data feeds with zero ad redirects or signup gates.</p>
+        <div class="search-controls-container">
+            <div class="search-box-row">
+                <input type="text" id="user-search" class="search-box" oninput="executeSearch()" placeholder="Search by provider, exam name, state, or title...">
+                
+                <select id="caste-select" class="interactive-select-node" onchange="executeSearch()">
+                    <option value="All">All Castes</option>
+                    <option value="General">General / Open</option>
+                    <option value="OBC">OBC Category</option>
+                    <option value="SC">SC Category</option>
+                    <option value="ST">ST Category</option>
+                </select>
+
+                <select id="state-select" class="interactive-select-node" onchange="executeSearch()">
+                    <option value="All">All Regions</option>
+                    <option value="Pan-India">Pan-India</option>
+                    <option value="Delhi">Delhi NCR</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Hyderabad">Hyderabad / AP</option>
+                </select>
+            </div>
         </div>
 
-        <input type="text" id="user-search" class="search-box" oninput="executeSearch()" placeholder="Search scholarships by title, criteria, or keywords...">
+        <div class="dashboard-section-header">🏆 Verified Higher Education Scholarships</div>
+        <div id="scholarships-view-wrapper"></div>
 
-        <div class="filter-group" id="filter-chips-wrapper">
-            <!-- Populated dynamically with numerical counting badges -->
-        </div>
-
-        <div id="dashboard-view"></div>
+        <div class="dashboard-section-header">📝 Entrance Exams, Cut-offs & Waivers</div>
+        <div id="exams-view-wrapper"></div>
     </main>
 
     <div id="modal-overlay" class="details-overlay" onclick="closeDetailsWindow()">
@@ -195,180 +230,198 @@
             <div class="founder-avatar">N</div>
             <div>
                 <div style="font-size: 0.65rem; color: #004d3d; font-weight: 700; text-transform: uppercase;">Project Founder</div>
-                <div style="font-size: 0.95rem; font-weight: 700; color: #1a202c;">Nikhil</div>
-                <div style="font-size: 0.75rem; color: #718096;">Lead Systems Architect</div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: #1c2826;">Nikhil</div>
+                <div style="font-size: 0.75rem; color: #608074;">Lead Systems Architect</div>
             </div>
         </div>
     </footer>
+
     <script>
         let grandDatabase = [];
-        let activeCategory = 'All';
 
-        // THE LIVE PIPELINE CORE: Reads directly from your cloud repository files
-        async function fetchScholarshipDatabase() {
-            try {
-                const response = await fetch('./test_ledger.json');
-                if (!response.ok) { throw new Error("Data sync file offline."); }
-                grandDatabase = await response.json();
-                initializeInterfacePipeline();
-            } catch (error) {
-                console.log("Syncing database pipeline. Initializing robust multi-category fallback ledger...");
-                grandDatabase = [
-                    {
-                        category: "Engineering",
-                        title: "RELIANCE FOUNDATION UNDERGRADUATE SCHOLARSHIPS 2026-27",
-                        offered_by: "Reliance Foundation Corporate CSR",
-                        amount: "₹2,0,000 Flat Academic Grant",
-                        deadline: "November 15, 2026",
-                        requirements: "1st Year Full-Time Degree Students + Income < 15L",
-                        overview: "Every scholarship under this programme traces back to a single promise made in December 2022. On the 90th birth anniversary of Reliance's Founder-Chairman, Shri Dhirubhai Ambani, Mrs Nita Ambani, Founder and Chairperson of Reliance Foundation, pledged 50,000 scholarships over ten years.",
-                        application_url: "https://reliancefoundation.org",
-                        faq_q1: "What does this scholarship wrap cover?",
-                        faq_a1: "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition, textbooks, and computer devices.",
-                        faq_q2: "Is there a mandatory selection test?",
-                        faq_a2: "Yes, an internal online aptitude clearance test evaluates baseline structural competencies post-registration."
-                    },
-                    {
-                        category: "Govt",
-                        title: "TATA CAPITAL PANKH SCHOLARSHIP PROGRAM 2026-27",
-                        offered_by: "Tata Capital Corporate CSR Initiative",
-                        amount: "Up to ₹50,000 Tuition Allowance",
-                        deadline: "October 15, 2026",
-                        requirements: "Class 11, 12 or Professional Degree Students + Income < 4L",
-                        overview: "A targeted private corporate grant program designed to aid meritorious students from underprivileged backgrounds across India in continuing their higher education journeys without financial strain.",
-                        application_url: "https://tatacapital.com",
-                        faq_q1: "What expenses does this funding handle?",
-                        faq_a1: "It targets institution tuition bills, registration costs, and textbook contingencies directly.",
-                        faq_q2: "Is performance criteria checked for renewal?",
-                        faq_a2: "Yes, maintaining a minimum aggregate score of 60% with zero backlogs guarantees annual continuity."
-                    },
-                    {
-                        category: "Engineering",
-                        title: "JK TYRE SHIKSHA SARTHI SCHOLARSHIP PROGRAM 2026-27",
-                        offered_by: "JK Tyre & Industries Corporate Board",
-                        amount: "₹25,000 / Year Contingency Grant",
-                        deadline: "September 20, 2026",
-                        requirements: "Wards of Heavy Commercial Vehicle Drivers + Minimum 60% in Board",
-                        overview: "A specialized welfare scholarship initiative targeting children of heavy commercial transport drivers across India to fund diploma and technical graduate courses seamlessly.",
-                        application_url: "https://jktyre.com",
-                        faq_q1: "Who can register inside this pipeline?",
-                        faq_a1: "Strictly wards of commercial transport driving license holders who are entering technical courses.",
-                        faq_q2: "What document files must be verified?",
-                        faq_a2: "Valid commercial licenses, state income sheets, and institutional seat slips must be loaded."
-                    },
-                    {
-                        category: "Business",
-                        title: "RAMAN KANT MUNJAL SCHOLARSHIPS 2026-27",
-                        offered_by: "Raman Kant Munjal Foundation & Hero Group",
-                        amount: "Up to ₹5,000 / Month Living Allowance",
-                        deadline: "September 30, 2026",
-                        requirements: "1st Year BBA, B.Com, BMS or IPMAT Streams + Income < 4L",
-                        overview: "Elite private foundational scholarship program managed by the Hero Group targeting outstanding management and finance tracking undergraduate aspirants across premium state universities.",
-                        application_url: "https://rkmfoundation.org",
-                        faq_q1: "Is this limited to management fields?",
-                        faq_a1: "Yes, it targets management, economics, corporate finance, and integrated business degree paths exclusively.",
-                        faq_q2: "Are hostel accommodations handled?",
-                        faq_a2: "The flat monthly stipend can be assigned cleanly to cover residential hostel bills or library logistics."
-                    }
-                ];
-                initializeInterfacePipeline();
-            }
+        // THE ULTIMATE EXPANSIVE ARCHITECTURE REGISTRY: Fully Deep-Routed & Caste-Mapped
+        function fetchScholarshipDatabase() {
+            grandDatabase = [
+                {
+                    type: "scholarship",
+                    category: "Engineering",
+                    title: "RELIANCE FOUNDATION UNDERGRADUATE SCHOLARSHIPS",
+                    offered_by: "Reliance Foundation Corporate CSR Board",
+                    amount: "₹2,00,000 Total Stipend",
+                    deadline: "November 15, 2026",
+                    caste: "General, OBC, SC, ST",
+                    state: "Pan-India",
+                    requirements: "1st Year Full-Time Degree Students + Income < 15L",
+                    overview: "On the 90th birth anniversary of Reliance's Founder-Chairman, Shri Dhirubhai Ambani, Mrs Nita Ambani pledged 50,000 scholarships over ten years. Bypasses intermediate channels to fund tuition directly.",
+                    application_url: "https://reliancefoundation.org",
+                    faq_q1: "What does this scholarship wrap cover?",
+                    faq_a1: "It supplies up to ₹2 Lakhs over the standard duration of your degree track to handle tuition, textbooks, and computer devices.",
+                    faq_q2: "Is there a mandatory selection test?",
+                    faq_a2: "Yes, an internal online aptitude clearance test evaluates baseline structural competencies post-registration."
+                },
+                {
+                    type: "scholarship",
+                    category: "Govt",
+                    title: "TATA CAPITAL PANKH SCHOLARSHIP PROGRAM",
+                    offered_by: "Tata Capital Corporate CSR Initiative",
+                    amount: "Up to ₹50,000 Tuition Fee Support",
+                    deadline: "October 15, 2026",
+                    caste: "General, OBC, SC, ST",
+                    state: "Pan-India",
+                    requirements: "Class 11, 12, Diploma or Professional Degrees + Income < 4L",
+                    overview: "A specialized welfare scholarship initiative aimed at helping students from vulnerable financial groups clear their institutional tuition dues cleanly.",
+                    application_url: "https://buddy4study.com",
+                    faq_q1: "What fields can claim this grant?",
+                    faq_a1: "It handles general undergraduate paths, polytechnic diplomas, and professional skill vocational courses.",
+                    faq_q2: "Is performance criteria checked for renewal?",
+                    faq_a2: "Yes, maintaining a minimum aggregate score baseline of 60% with zero backlogs guarantees annual continuity."
+                },
+                {
+                    type: "exam",
+                    category: "Engineering",
+                    title: "JEE MAIN & ADVANCED JoSAA FEE WAIVER MATRIX",
+                    offered_by: "Ministry of Education / JoSAA Counseling Authority",
+                    amount: "100% Full Tuition Fee Remission",
+                    deadline: "July 2027 Counseling Phase",
+                    caste: "SC, ST",
+                    state: "Pan-India",
+                    requirements: "IIT/NIT/IIIT Seat Allocation + Certified Valid Category Status",
+                    overview: "Universal government-mandated top-class education waiver embedded directly into all national technical institutes. Completely free education for SC/ST and PwD rank holders.",
+                    application_url: "https://josaa.nic.in",
+                    faq_q1: "Do General or OBC clusters qualify for waivers?",
+                    faq_a1: "Yes! General/OBC candidates with a family income below 1L get 100% remission. Candidates between 1L to 5L get a 2/3rd fee waiver.",
+                    faq_q2: "Is a separate external application needed?",
+                    faq_a2: "No, submitting your family income certificate directly to your allotted institute's academic dean during reporting triggers it instantly."
+                },
+                {
+                    type: "exam",
+                    category: "Engineering",
+                    title: "UGEE INTAKE REGISTRY - IIIT HYDERABAD",
+                    offered_by: "International Institute of Information Technology, Hyderabad",
+                    amount: "Integrated Dual Degree (B.Tech + MS) Entry",
+                    deadline: "April 15, 2027 Intake Gate",
+                    caste: "General, OBC, SC, ST",
+                    state: "Hyderabad",
+                    requirements: "Class 12 Pass (PCM) + Supreme & Reap Research Test Clearance",
+                    overview: "Official entrance tracking matrix for research-oriented integrated courses at IIIT-H. Offers need-based internal financial support up to 100% tuition coverage post-admission.",
+                    application_url: "https://iiit.ac.in",
+                    faq_q1: "What is the structure of the UGEE screening?",
+                    faq_a1: "It uses a two-section computer test: SUPR (Subject Proficiency) and REAP (Research Aptitude).",
+                    faq_q2: "What are the baseline cutoff thresholds for REAP?",
+                    faq_a2: "The research cutoff scales dynamically based on slot difficulty metrics, averaging 20-25 marks out of 50."
+                },
+                 ,
+                {
+                    type: "exam",
+                    category: "Business",
+                    title: "IPMAT ADMISSIONS TRACKER - IIM INDORE",
+                    offered_by: "IIM Indore Integrated Program Management Board",
+                    amount: "Need-Based Financial Assistance (NBFA) Concessions",
+                    deadline: "May 10, 2027 Registration Gate",
+                    caste: "General, OBC, SC, ST",
+                    state: "Pan-India",
+                    requirements: "Class 12 Clearing Status + IPMAT Selection Merit Ranks",
+                    overview: "Integrated 5-year tracking index across premium business tracks. Grants structural NBFA concessions reducing full tuition and hostel charges to zero for low-income brackets.",
+                    application_url: "https://iimidr.ac.in",
+                    faq_q1: "How fast are need waivers assigned?",
+                    faq_a1: "Waiver applications process immediately during the initial registration verification cycle.",
+                    faq_q2: "Does this protect on-campus residential fees?",
+                    faq_a2: "Yes, approved NBFA allocations reduce compound hostel charges fluidly by up to 100%."
+                }
+            ];
+            initializeInterfacePipeline();
         }
 
         function initializeInterfacePipeline() {
-            renderFilterChips();
             renderInterface();
             renderNotificationHubLogs();
         }
 
-        function getCategoryCount(category) {
-            if (category === 'All') return grandDatabase.length;
-            return grandDatabase.filter(item => item.category === category).length;
-        }
-
-        function renderFilterChips() {
-            const wrapper = document.getElementById('filter-chips-wrapper');
-            const categories = ['All', 'Engineering', 'Business', 'Medical', 'Govt', 'Abroad'];
-            wrapper.innerHTML = '';
-            
-            categories.forEach(cat => {
-                const isActive = (cat === activeCategory) ? 'active' : '';
-                const count = getCategoryCount(cat);
-                const displayLabel = cat === 'All' ? 'All Opportunities' : 
-                                     cat === 'Engineering' ? 'Engineering / Tech' :
-                                     cat === 'Business' ? 'Business / IPMAT' :
-                                     cat === 'Medical' ? 'Medical / NEET' :
-                                     cat === 'Govt' ? 'Government Registers' : 'Global Fellowships';
-                                     
-                wrapper.innerHTML += `<button class="filter-btn ${isActive}" onclick="filterStream('${cat}')">${displayLabel} <span class="filter-count">${count}</span></button>`;
-            });
-        }
-
         function renderInterface() {
-            const listWrapper = document.getElementById('dashboard-view');
-            listWrapper.innerHTML = '';
+            const scholarshipWrapper = document.getElementById('scholarships-view-wrapper');
+            const examWrapper = document.getElementById('exams-view-wrapper');
+            
+            scholarshipWrapper.innerHTML = '';
+            examWrapper.innerHTML = '';
             
             const searchQuery = document.getElementById('user-search').value.toLowerCase();
-            const filteredData = grandDatabase.filter(item => {
-                const catMatches = (activeCategory === 'All' || item.category === activeCategory);
+            const casteFilter = document.getElementById('caste-select').value;
+            const stateFilter = document.getElementById('state-select').value;
+
+            let scholarshipCount = 0;
+            let examCount = 0;
+
+            grandDatabase.forEach((item, index) => {
                 const textMatches = item.title.toLowerCase().includes(searchQuery) || 
                                     item.offered_by.toLowerCase().includes(searchQuery) ||
                                     item.overview.toLowerCase().includes(searchQuery);
-                return catMatches && textMatches;
+                                    
+                const casteMatches = (casteFilter === 'All' || item.caste.includes(casteFilter));
+                const stateMatches = (stateFilter === 'All' || item.state === 'Pan-India' || item.state === stateFilter);
+
+                if (textMatches && casteMatches && stateMatches) {
+                    const cardHtml = `
+                        <div class="card">
+                            <div>
+                                <span class="sponsored-tag">✦ Verified ${item.category}</span>
+                                <h2 class="card-title" onclick="openDetailsWindow(${index})" style="margin-top: 6px;">${item.title}</h2>
+                                <p class="card-sub">Administered by ${item.offered_by}</p>
+                            </div>
+                            
+                            <div class="info-panel">
+                                <div class="info-col">
+                                    <div class="vector-badge-container">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                                    </div>
+                                    <div class="info-text-group">
+                                        <div class="info-label">Benefits / Scope</div>
+                                        <div class="info-value">${item.amount}</div>
+                                    </div>
+                                </div>
+                                <div class="info-col">
+                                    <div class="vector-badge-container">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                                    </div>
+                                    <div class="info-text-group">
+                                        <div class="info-label">Closing Target</div>
+                                        <div class="info-value">${item.deadline}</div>
+                                    </div>
+                                </div>
+                                <div class="info-col">
+                                    <div class="vector-badge-container">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    </div>
+                                    <div class="info-text-group">
+                                        <div class="info-label">Eligibility Matrix</div>
+                                        <div class="info-value" style="font-size:0.8rem; color:#608074;">Caste: ${item.caste} • Region: ${item.state}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="overview-box">${item.overview}</div>
+                            
+                            <div class="card-actions-row">
+                                <button class="btn-action-node secondary" onclick="openDetailsWindow(${index})">View Details</button>
+                                <a href="${item.application_url}" target="_blank" class="btn-action-node primary">Apply Now →</a>
+                            </div>
+                        </div>`;
+
+                    if (item.type === "scholarship") {
+                        scholarshipWrapper.innerHTML += cardHtml;
+                        scholarshipCount++;
+                    } else if (item.type === "exam") {
+                        examWrapper.innerHTML += cardHtml;
+                        examCount++;
+                    }
+                }
             });
 
-            if (filteredData.length === 0) {
-                listWrapper.innerHTML = `<div style="text-align:center; padding:48px 24px; color:#718096; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0;"><div style="font-size: 1.5rem; color: #004d3d;">🔍</div><div style="font-size: 0.95rem; font-weight: 600; color: #1a202c; margin-top:8px;">No matching results located inside the query parameters.</div></div>`;
-                return;
+            if (scholarshipCount === 0) {
+                scholarshipWrapper.innerHTML = `<div style="text-align:center; padding:32px; color:#608074; background:#ffffff; border-radius:12px; border:1px solid #cbdcd7;">No matching scholarships inside selected filter parameters.</div>`;
             }
-
-            filteredData.forEach((item, index) => {
-                listWrapper.innerHTML += `
-                    <div class="card">
-                        <div>
-                            <span class="sponsored-tag">✦ Curated</span>
-                            <h2 class="card-title" onclick="openDetailsWindow(${index})" style="margin-top: 4px;">${item.title}</h2>
-                            <p class="card-sub">Offered by ${item.offered_by}</p>
-                        </div>
-                        
-                        <div class="info-panel">
-                            <div class="info-col">
-                                <div class="vector-badge-container">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-                                </div>
-                                <div class="info-text-group">
-                                    <div class="info-label">Amount</div>
-                                    <div class="info-value">${item.amount}</div>
-                                </div>
-                            </div>
-                            <div class="info-col">
-                                <div class="vector-badge-container">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                                </div>
-                                <div class="info-text-group">
-                                    <div class="info-label">Deadline</div>
-                                    <div class="info-value">${item.deadline}</div>
-                                </div>
-                            </div>
-                            <div class="info-col">
-                                <div class="vector-badge-container">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                                </div>
-                                <div class="info-text-group">
-                                    <div class="info-label">Requirements</div>
-                                    <div class="info-value">${item.requirements}</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="overview-box">${item.overview}</div>
-                        
-                        <div class="card-actions-row">
-                            <button class="btn-action-node secondary" onclick="openDetailsWindow(${index})">View Details</button>
-                            <a href="${item.application_url || '#'}" target="_blank" class="btn-action-node primary">Apply</a>
-                        </div>
-                    </div>`;
-            });
+            if (examCount === 0) {
+                examWrapper.innerHTML = `<div style="text-align:center; padding:32px; color:#608074; background:#ffffff; border-radius:12px; border:1px solid #cbdcd7;">No matching entrance matrix records under this view query.</div>`;
+            }
         }
 
         function openDetailsWindow(idx) {
@@ -377,9 +430,9 @@
             
             modalBody.innerHTML = `
                 <div>
-                    <span class="sponsored-tag" style="font-size:0.75rem;">✦ Curated System Entry</span>
-                    <h1 style="font-size: 1.6rem; font-weight: 700; color: #004d3d; line-height: 1.3; margin-top:4px; text-transform: uppercase;">${targetItem.title}</h1>
-                    <p style="font-size: 0.85rem; color: #718096; margin-top: 2px;">Administered by ${targetItem.offered_by} • Ref ID: SS-00${idx}</p>
+                    <span class="sponsored-tag">✦ Secure Data Endpoint</span>
+                    <h1 style="font-size: 1.6rem; font-weight: 700; color: #004d3d; line-height: 1.3; margin-top:6px;">${targetItem.title}</h1>
+                    <p style="font-size: 0.85rem; color: #608074; margin-top: 2px;">Administered by ${targetItem.offered_by} • Param Path: SS-NODE-00${idx}</p>
                 </div>
                 
                 <div class="tab-menu-bar">
@@ -389,30 +442,31 @@
                 </div>
                 
                 <div id="pane-about" class="tab-pane-content active">
-                    <div class="section-headline">About The Scholarship</div>
-                    <p>${targetItem.overview || "No comprehensive program summary logs archived inside current node."}</p>
+                    <div class="section-headline">About The Opportunity</div>
+                    <p>${targetItem.overview}</p>
                 </div>
                 
                 <div id="pane-eligibility" class="tab-pane-content">
-                    <div class="section-headline">Eligibility Requirements</div>
-                    <p style="font-weight:700; color: #004d3d;">⚠️ Mandatory Baseline Thresholds:</p>
-                    <p style="margin-top:2px;">${targetItem.requirements}</p>
-                    <p style="margin-top:10px; color:#718096; font-size:0.85rem;">* Verified documents and income status tracking checks run automatically through background pipelines.</p>
+                    <div class="section-headline">Eligibility Parameters Matrix</div>
+                    <p style="font-weight:700; color: #004d3d; margin-bottom:4px;">⚠️ Verification Requirements:</p>
+                    <p>${targetItem.requirements}</p>
+                    <p style="margin-top:8px; font-weight:600; color:#2d3748;">Target Caste Groups: <span style="color:#004d3d;">${targetItem.caste}</span></p>
+                    <p style="font-weight:600; color:#2d3748;">Domicile Location Rule: <span style="color:#004d3d;">${targetItem.state}</span></p>
                 </div>
                 
                 <div id="pane-faqs" class="tab-pane-content">
                     <div class="section-headline">Frequently Asked Questions</div>
                     <div class="faq-block-row">
-                        <div class="faq-question-text">Q: ${targetItem.faq_q1 || "Who administers this program tracking portal?"}</div>
-                        <div style="color:#4a5568; font-size:0.9rem;">A: ${targetItem.faq_a1 || "Administered directly by verified corporate foundation tracks or state ministry boards."}</div>
+                        <div class="faq-question-text">Q: ${targetItem.faq_q1}</div>
+                        <div style="color:#4a5568; font-size:0.9rem;">A: ${targetItem.faq_a1}</div>
                     </div>
-                    <div class="faq-block-row" style="margin-top:14px;">
-                        <div class="faq-question-text">Q: ${targetItem.faq_q2 || "Is renewal profile validation enforced?"}</div>
-                        <div style="color:#4a5568; font-size:0.9rem;">A: ${targetItem.faq_a2 || "Maintaining standard campus academic grading levels guarantees continuation across subsequent years."}</div>
+                    <div class="faq-block-row" style="margin-top:12px;">
+                        <div class="faq-question-text">Q: ${targetItem.faq_q2}</div>
+                        <div style="color:#4a5568; font-size:0.9rem;">A: ${targetItem.faq_a2}</div>
                     </div>
                 </div>
                 
-                <a href="${targetItem.application_url || '#'}" target="_blank" class="apply-now-btn">Proceed To Official Application Gate ↗</a>
+                <a href="${targetItem.application_url}" target="_blank" class="apply-now-btn">Proceed To Direct Registration Portal ↗</a>
             `;
             document.getElementById('modal-overlay').classList.add('active');
         }
@@ -443,8 +497,8 @@
             grandDatabase.forEach((item) => {
                 listWrapper.innerHTML += `
                     <div class="notification-item">
-                        <span class="notif-tag">✦ New Ingestion Tracker</span>
-                        <div class="notif-title">Pushed live listings: "${item.title}" successfully sync'd.</div>
+                        <span class="notif-tag">✦ Live Node Synced</span>
+                        <div class="notif-title">Registry record "${item.title}" mapped securely.</div>
                     </div>`;
             });
         }
@@ -456,12 +510,6 @@
             }
         });
 
-        function filterStream(category) {
-            activeCategory = category;
-            renderFilterChips();
-            renderInterface();
-        }
-
         function executeSearch() {
             renderInterface();
         }
@@ -470,3 +518,4 @@
     </script>
 </body>
 </html>
+
