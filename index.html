@@ -207,7 +207,7 @@
         // THE LIVE PIPELINE CORE: Reads directly from your cloud repository files
         async function fetchScholarshipDatabase() {
             try {
-                const response = await fetch('./live_database.json');
+                const response = await fetch('./test_ledger.json');
                 if (!response.ok) { throw new Error("Data sync file offline."); }
                 grandDatabase = await response.json();
                 initializeInterfacePipeline();
